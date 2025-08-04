@@ -117,7 +117,7 @@ def arrastar(inicio, fim, duracao=1):
     pyautogui.mouseUp(fim[0], fim[1])
     print("Arrasto concluído.")
 
-def perder_mesmo():
+def render():
     clicar('selecionar_tropa')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
@@ -130,10 +130,30 @@ def perder_mesmo():
     clicar('ok')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
+def ataque():
+    """
+    Função para realizar um ataque.
+    """
+    procurar_partida()
+    
+    clicar('selecionar_tropa')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+
+    # Segurar para posicionar a tropas
+    clicar('posicionar_tropa')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+
+    # Acionar habilidades ao longo do ataque
+    pass
+def ganhar():
+
+    procurar_partida()
+    ataque()
+
 def perder():    
 
     procurar_partida()
-    perder_mesmo()
+    render()
 
     
 # Executar a sequência de automação
