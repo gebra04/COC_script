@@ -4,28 +4,39 @@ import random
 import os
 
 delay = 0.3
+
+
+def var ():
+    """
+    Função para adicionar uma variação aleatória às coordenadas dos botões.
+    Isso ajuda a simular um comportamento humano e evitar detecções de automação.
+    """
+    return random.randint(-4, 4)
+
+
 botoes = {
-    'atacar': (45, 473),
-    'encontrar': (660, 350),
-    'selecionar_tropa_q': (152, 470),
-    'selecionar_tropa_1': (212, 470),
-    'selecionar_tropa_2': (272, 470),
-    'selecionar_tropa_3': (332, 470),
-    'selecionar_tropa_4': (392, 470),
-    'selecionar_tropa_5': (452, 470),
-    'selecionar_tropa_6': (512, 470),
-    'selecionar_tropa_7': (572, 470),
-    'selecionar_tropa_8': (632, 470),
-    'posicionar_tropa': (866, 276),
-    'render_se': (50, 400),
-    'ok': (522, 338),
-    'voltar': (442, 449),
-    'arrastar_inicio': (779, 264),
-    'arrastar_fim': (769, 383),
-    'carrinho': (614, 98),  # Coordenada a ser obtida
-    'coletar': (650, 450),
-    'fechar': (740, 80)
+    'atacar': (45 + var(), 473 + var()),
+    'encontrar': (660 + var(), 350 + var()),
+    'selecionar_tropa_q': (152 + var(), 470 + var()),
+    'selecionar_tropa_1': (212 + var(), 470 + var()),
+    'selecionar_tropa_2': (272 + var(), 470 + var()),
+    'selecionar_tropa_3': (332 + var(), 470 + var()),
+    'selecionar_tropa_4': (392 + var(), 470 + var()),
+    'selecionar_tropa_5': (452 + var(), 470 + var()),
+    'selecionar_tropa_6': (512 + var(), 470 + var()),
+    'selecionar_tropa_7': (572 + var(), 470 + var()),
+    'selecionar_tropa_8': (632 + var(), 470 + var()),
+    'posicionar_tropa': (866 + var(), 276 + var()),
+    'render_se': (50 + var(), 400 + var()),
+    'ok': (522 + var(), 338 + var()),
+    'voltar': (442 + var(), 449 + var()),
+    'arrastar_inicio': (779 + var(), 264 + var()),
+    'arrastar_fim': (769 + var(), 383 + var()),
+    'carrinho': (614 + var(), 98 + var()),
+    'coletar': (650 + var(), 450 + var()),
+    'fechar': (740 + var(), 80 + var())
 }
+
 
 def clicar_por_imagem(caminho_da_pasta):
     """
