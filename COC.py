@@ -4,11 +4,18 @@ import random
 import os
 
 delay = 0.3
-# Definindo as coordenadas dos botões
 botoes = {
     'atacar': (45, 473),
     'encontrar': (660, 350),
-    'selecionar_tropa': (212, 470),
+    'selecionar_tropa_q': (152, 470),
+    'selecionar_tropa_1': (212, 470),
+    'selecionar_tropa_2': (272, 470),
+    'selecionar_tropa_3': (332, 470),
+    'selecionar_tropa_4': (392, 470),
+    'selecionar_tropa_5': (452, 470),
+    'selecionar_tropa_6': (512, 470),
+    'selecionar_tropa_7': (572, 470),
+    'selecionar_tropa_8': (632, 470),
     'posicionar_tropa': (866, 276),
     'render_se': (50, 400),
     'ok': (522, 338),
@@ -61,7 +68,8 @@ def clicar_por_imagem(caminho_da_pasta):
     # Se o loop terminar e nenhuma imagem for encontrada
     print("Nenhuma das imagens na pasta foi encontrada na tela.")
     return False
-            
+
+
 def coletar_carrinho():
     """
     Função para coletar o carrinho de recursos.
@@ -79,6 +87,36 @@ def coletar_carrinho():
     time.sleep(delay + random.uniform(0.1, 0.2))
 
 
+def posicionar_tropa():
+        clicar('selecionar_tropa_1')
+        clicar('posicionar_tropa')
+        time.sleep(random.uniform(0.1, 0.2))
+        clicar('selecionar_tropa_2')
+        clicar('posicionar_tropa')
+        time.sleep(random.uniform(0.1, 0.2))
+        clicar('selecionar_tropa_3')
+        clicar('posicionar_tropa')
+        time.sleep(random.uniform(0.1, 0.2))
+        clicar('selecionar_tropa_4')
+        clicar('posicionar_tropa')
+        time.sleep(random.uniform(0.1, 0.2))
+        clicar('selecionar_tropa_5')
+        clicar('posicionar_tropa')
+        time.sleep(random.uniform(0.1, 0.2))
+        clicar('selecionar_tropa_6')
+        clicar('posicionar_tropa')
+        time.sleep(random.uniform(0.1, 0.2))
+        clicar('selecionar_tropa_7')
+        clicar('posicionar_tropa')
+        time.sleep(random.uniform(0.1, 0.2))
+        clicar('selecionar_tropa_8')
+        clicar('posicionar_tropa')
+        time.sleep(random.uniform(0.1, 0.2))
+        clicar('selecionar_tropa_q')
+        clicar('posicionar_tropa')
+        time.sleep(random.uniform(0.1, 0.2))
+
+
 def procurar_partida():
     """ 
     Função para procurar uma partida.
@@ -88,7 +126,6 @@ def procurar_partida():
     
     clicar('encontrar')
     time.sleep(delay + 5 + random.uniform(0.1, 0.2))
-
 
 
 def clicar(nome_do_botao, duracao_clique=0.1):
@@ -106,6 +143,7 @@ def clicar(nome_do_botao, duracao_clique=0.1):
     else:
         print(f"Erro: Botão '{nome_do_botao}' não encontrado nas coordenadas.")
 
+
 def arrastar(inicio, fim, duracao=1):
     """
     Função para arrastar de um ponto inicial para um ponto final.
@@ -117,12 +155,8 @@ def arrastar(inicio, fim, duracao=1):
     pyautogui.mouseUp(fim[0], fim[1])
     print("Arrasto concluído.")
 
-def render():
-    clicar('selecionar_tropa')
-    time.sleep(delay + random.uniform(0.1, 0.2))
 
-    clicar('posicionar_tropa')
-    time.sleep(delay + random.uniform(0.1, 0.2))
+def render():
 
     clicar('render_se')
     time.sleep(delay + random.uniform(0.1, 0.2))
@@ -130,45 +164,80 @@ def render():
     clicar('ok')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
+    clicar('voltar')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+
+
 def ataque():
     """
     Função para realizar um ataque.
     """
-    procurar_partida()
-    
-    clicar('selecionar_tropa')
-    time.sleep(delay + random.uniform(0.1, 0.2))
-
-    # Segurar para posicionar a tropas
-    clicar('posicionar_tropa')
-    time.sleep(delay + random.uniform(0.1, 0.2))
-
+    posicionar_tropa()
     # Acionar habilidades ao longo do ataque
-    pass
-def ganhar():
+    time.sleep(8 + random.uniform(0.1, 0.2))
+    clicar('selecionar_tropa_1')
+    clicar('selecionar_tropa_2')
+    clicar('selecionar_tropa_7')
+    clicar('selecionar_tropa_8')
+    time.sleep(9 + random.uniform(0.1, 0.2))
+    clicar('selecionar_tropa_3')
+    clicar('selecionar_tropa_4')
+    time.sleep(9 + random.uniform(0.1, 0.2))
+    clicar('selecionar_tropa_5')
+    clicar('selecionar_tropa_6')
+    clicar('selecionar_tropa_q')
+        
 
+def ganhar():
     procurar_partida()
     ataque()
+    time.sleep(35)
+    ataque()
+    time.sleep(40)
+    clicar('render_se')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+
+    clicar('ok')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+
+    clicar('voltar')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+
 
 def perder():    
-
     procurar_partida()
+
+    clicar('selecionar_tropa_1')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+
+    clicar('posicionar_tropa')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+    
     render()
 
     
 # Executar a sequência de automação
 if __name__ == "__main__":
     # Dê um tempo para você mudar para a janela do jogo
-    modo = input("Qual modo deseja executar?\n 1 - Perder\n 2 - Ganhar\n")
+    modo = input("Qual modo deseja executar?\n 1 - Perder\n 2 - Ganhar\n 3 - Híbrido\n")
     iter = int(input("Quantas vezes você deseja executar o script?"))
-    # iter = 1
-    # print("Você tem 3 segundos para focar na janela do jogo...")
-    # time.sleep(3)
-    for _ in range(0, iter):
+
+    for i in range(0, iter):
         if modo == "1":
             perder()
+            time.sleep(3)
+
         elif modo == "2":
-            print("Modo ganhar não implementado.")
-            # ganhar()
-        if iter % 5 == 1:
+            ganhar()
+            time.sleep(3)
+
+        elif modo == "3":
+            ganhar()
+            time.sleep(3)
+            perder()
+            time.sleep(3)
+
+        if i % 2 == 0:
             coletar_carrinho()
+        time.sleep(3)
+        print(f"{i + 1}a iteração concluída.")
