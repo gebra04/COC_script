@@ -35,7 +35,7 @@ def var ():
     Função para adicionar uma variação aleatória às coordenadas dos botões.
     Isso ajuda a simular um comportamento humano e evitar detecções de automação.
     """
-    return random.randint(-4, 4)
+    return random.randint(-2, 2)
 
 
 def gerar_pontos_na_reta(xi, yi, xf, yf, num_pontos=8):
@@ -87,21 +87,21 @@ botoes = {
     'fechar': (740 + var(), 80 + var()),
     'arrastar_baixo_ini' : (440, 331),
     'arrastar_baixo_fim' : (443, 231),
-    'posicao_dragao_1' : (460 + var(), 410 + var()),
-    'posicao_dragao_2' : (470 + var(), 405 + var()),
-    'posicao_dragao_3' : (485 + var(), 395 + var()),
-    'posicao_dragao_4' : (560 + var(), 390 + var()),
-    'posicao_dragao_5' : (575 + var(), 322 + var()),
-    'posicao_dragao_6' : (590 + var(), 314 + var()),
-    'posicao_dragao_7' : (605 + var(), 306 + var()),
-    'posicao_dragao_8' : (615 + var(), 296 + var()),
-    'posicao_dragao_9' : (630 + var(), 286 + var()),
-    'posicao_dragao_10' : (645 + var(), 273 + var()),
-    'posicao_dragao_11' : (655 + var(), 268 + var()),
-    'posicao_dragao_12' : (670 + var(), 259 + var()),
-    'posicao_dragao_13' : (720 + var(), 210 + var()),
-    'posicao_dragao_14' : (735 + var(), 203 + var()),
-    'posicao_dragao_15' : (755 + var(), 188 + var()),
+    'posicao_dragao_1' : (470 + var(), 420 + var()),
+    'posicao_dragao_2' : (480 + var(), 415 + var()),
+    'posicao_dragao_3' : (495 + var(), 405 + var()),
+    'posicao_dragao_4' : (570 + var(), 400 + var()),
+    'posicao_dragao_5' : (585 + var(), 332 + var()),
+    'posicao_dragao_6' : (600 + var(), 324 + var()),
+    'posicao_dragao_7' : (615 + var(), 316 + var()),
+    'posicao_dragao_8' : (625 + var(), 306 + var()),
+    'posicao_dragao_9' : (640 + var(), 296 + var()),
+    'posicao_dragao_10' : (655 + var(), 283 + var()),
+    'posicao_dragao_11' : (665 + var(), 278 + var()),
+    'posicao_dragao_12' : (680 + var(), 269 + var()),
+    'posicao_dragao_13' : (730 + var(), 230 + var()),
+    'posicao_dragao_14' : (745 + var(), 213 + var()),
+    'posicao_dragao_15' : (765 + var(), 198 + var()),
     'pocao_de_furia_1' : (478 + var(), 270 + var()),
     'pocao_de_furia_2' : (557 + var(), 225 + var()),
     'pocao_de_furia_3' : (633 + var(), 167 + var()),
@@ -254,6 +254,27 @@ def arrastar(inicio, fim, duracao=1):
     print("Arrasto concluído.")
 
 
+def ajustar_hotbar(rei, rainha_arq, guardiao, campea):
+    """
+    Ajusta a hotbar de acordo com os heróis selecionados.
+    Retorna as coordenadas dos botões ajustados.
+    """
+    sel_rei, sel_rainha, sel_guardiao, sel_campea, sel_pocao = None, None, None, None, None
+
+    if guardiao['ativo']:
+        sel_guardiao = f"selecionar_tropa_{3}"
+    if rainha_arq['ativo']:
+        sel_rainha = f"selecionar_tropa_{3+guardiao['ativo']}"
+    if rei['ativo']:
+        sel_rei = f"selecionar_tropa_{3+guardiao['ativo']+rainha['ativo']}"
+    if campea['ativo']:
+        sel_campea = f"selecionar_tropa_{3+guardiao['ativo']+rainha['ativo']+rei['ativo']}"
+
+    sel_pocao = f"selecionar_tropa_{3+guardiao['ativo']+rainha['ativo']+rei['ativo']+campea['ativo']}"
+
+    return sel_rei, sel_rainha, sel_guardiao, sel_campea, sel_pocao
+
+
 def render():
 
     clicar('render_se')
@@ -329,24 +350,26 @@ def perder():
     render()
 
 
-def ataque_dragao(herois):
+def ataque_dragao(herois, rei, rainha, guardiao, campea, sel_pocao):
     procurar_partida()
     time.sleep(3)
 
     # Arrastar a tela
-    arrastar(botoes['arrastar_inicio_ataque'], botoes['arrastar_fim_ataque'])
+    arrastar(botoes['arrastar_baixo_ini'], botoes['arrastar_baixo_fim'])
     time.sleep(delay + random.uniform(0.1, 0.2))
 
     # Posicionar tropas de afunilamento
+    if herois:
+        if rei['ativo']:
+            clicar(rei['sel'])
+            clicar('posicao_dragao_1')
+            clicar('selecionar_tropa_2')
+            clicar('posicao_dragao_1')
+            
     clicar('selecionar_tropa_1')
     clicar('posicao_dragao_1')
     clicar('posicao_dragao_2')
-    clicar('posicao_dragao_3')
     
-    if herois:
-        if rei_bar:
-            clicar('selecionar_tropa_6')
-            clicar('posicao_dragao_1')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
     # Posicionar tropas de afunilamento
@@ -355,8 +378,8 @@ def ataque_dragao(herois):
     clicar('posicao_dragao_15')
 
     if herois:
-        if campea:
-            clicar('selecionar_tropa_7')
+        if campea['ativo']:
+            clicar(campea['sel'])
             clicar('posicao_dragao_15')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
@@ -368,16 +391,17 @@ def ataque_dragao(herois):
     clicar('posicao_dragao_8')
     clicar('posicao_dragao_9')
     clicar('posicao_dragao_10')
+    clicar('posicao_dragao_10')
     clicar('posicao_dragao_11')
     clicar('posicao_dragao_12')
     clicar('selecionar_tropa_q')
     clicar('posicao_dragao_12')
     if herois:
-        if guardiao:
-            clicar('selecionar_tropa_4')
+        if guardiao['ativo']:
+            clicar(guardiao['sel'])
             clicar('posicao_dragao_6')
-        if rainha_arq:
-            clicar('selecionar_tropa_5')
+        if rainha['ativo']:
+            clicar(rainha['sel'])
             clicar('posicao_dragao_6')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
@@ -385,34 +409,36 @@ def ataque_dragao(herois):
     time.sleep(8)
 
     # Usar poções de fúria
-    clicar('selecionar_tropa_3')
+    clicar(sel_pocao)
     clicar('pocao_de_furia_1')
     clicar('pocao_de_furia_2')
     clicar('pocao_de_furia_3')
     # Posicionar máquina de cerco
-    clicar('selecionar_tropa_2')
-    clicar('posicao_dragao_10')
+    if not rei['ativo']:
+        clicar('selecionar_tropa_2')
+        clicar('posicao_dragao_10')
 
     # Esperar a primeira fúria acabar
-    time.sleep(12)
+    time.sleep(8)
+    if herois:
+        clicar(guardiao['sel']) if guardiao['ativo'] else None
+        clicar(rainha['sel']) if rainha['ativo'] else None
+        clicar(rei['sel']) if rei['ativo'] else None
+        clicar(campea['sel']) if campea['ativo'] else None
+    time.sleep(4)
 
     # Usarúltimas poções de fúria
-    clicar('selecionar_tropa_3')
+    clicar(sel_pocao)
     clicar('pocao_de_furia_4')
     clicar('pocao_de_furia_5')
     # Ativar habilidades dos heróis
-    if herois:
-        clicar('selecionar_tropa_4')
-        clicar('selecionar_tropa_5')
-        clicar('selecionar_tropa_6')
-        clicar('selecionar_tropa_7')
-        
+
     # Esperar o ataque terminar
     time.sleep(85)
     render()
     
 
-def ataque_goblin():
+def ataque_goblin(herois):
     procurar_partida()
     time.sleep(2)
 
@@ -444,11 +470,16 @@ if __name__ == "__main__":
     if modo >=  4:
         herois = int(input("Deseja usar heróis no ataque?\n 0 - Não\n 1 - Sim\n"))
         if herois:
-            rei_bar, rainha_arq, guardiao, campea = 0
-            rei_bar = int(input("Rei Bárbaro ativo?\n 0 - Não\n 1 - Sim\n"))
-            rainha_arq = int(input("Rainha Arqueira ativa?\n 0 - Não\n 1 - Sim\n"))
-            guardiao = int(input("Guardião ativo?\n 0 - Não\n 1 - Sim\n"))
-            campea = int(input("Campeã ativa?\n 0 - Não\n 1 - Sim\n"))
+            rei = {'ativo' : 0, 'sel' : None}
+            rainha = {'ativo' : 0, 'sel' : None}
+            guardiao = {'ativo' : 0, 'sel' : None}
+            campea = {'ativo' : 0, 'sel' : None}
+            rei['ativo'] = int(input("Rei Bárbaro ativo?\n 0 - Não\n 1 - Sim\n"))
+            rainha['ativo'] = int(input("Rainha Arqueira ativa?\n 0 - Não\n 1 - Sim\n"))
+            guardiao['ativo'] = int(input("Guardião ativo?\n 0 - Não\n 1 - Sim\n"))
+            campea['ativo'] = int(input("Campeã ativa?\n 0 - Não\n 1 - Sim\n"))
+            rei['sel'], rainha['sel'], guardiao['sel'], campea['sel'], sel_pocao = ajustar_hotbar(rei, rainha, guardiao, campea)
+            print(f"sel_rei: {rei['sel']}, rainha: {rainha['sel']}, guardiao: {guardiao['sel']}, campea: {campea['sel']}, sel_pocao: {sel_pocao}")
     num_vilas = 2
     espera_carrinho = 5
     if modo <= 3:
@@ -456,18 +487,18 @@ if __name__ == "__main__":
         num_vilas = int(input("Quantas vilas na casa do construtor?\n 1 - Uma vila\n 2 - Duas vilas\n"))
 
     for i in range(0, iter):
-        if modo == "1":
+        if modo == 1:
             perder()
             time.sleep(2)
 
-        elif modo == "2":
+        elif modo == 2:
             if num_vilas == 1:
                 ganhar_uma()
             else:
                 ganhar_duas()
             time.sleep(2)
 
-        elif modo == "3":
+        elif modo == 3:
             if num_vilas == 1:
                 ganhar_uma()
             else:
@@ -476,17 +507,17 @@ if __name__ == "__main__":
             perder()
             time.sleep(2)
 
-        elif modo == "4":
-            ataque_dragao(herois)
+        elif modo == 4:
+            ataque_dragao(herois, rei, rainha, guardiao, campea, sel_pocao)
             time.sleep(2)
         
-        elif modo == "5":
-            ataque_goblin()
+        elif modo == 5:
+            ataque_goblin(herois, rei, rainha, guardiao, campea, sel_pocao)
             time.sleep(2)
 
         
 
-        if i % espera_carrinho == 0 and (modo == "1" or modo == "2" or modo == "3") and (i != 0):
+        if i % espera_carrinho == 0 and modo <= 3 and (i != 0):
             coletar_carrinho()
         time.sleep(1)
         print(f"{i + 1}a iteração concluída.")
