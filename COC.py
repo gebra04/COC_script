@@ -286,7 +286,22 @@ def ataque():
     clicar('selecionar_tropa_q')
         
 
-def ganhar():
+def ganhar_uma():
+    procurar_partida()
+    ataque()
+    time.sleep(40)
+
+    clicar('render_se')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+
+    clicar('ok')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+
+    clicar('voltar')
+    time.sleep(delay + random.uniform(0.1, 0.2))
+
+
+def ganhar_duas():
     procurar_partida()
     ataque()
     time.sleep(40)
@@ -402,33 +417,40 @@ def ataque_goblin():
 if __name__ == "__main__":
     modo = input("Qual modo deseja executar?\n 1 - Perder\n 2 - Ganhar\n 3 - Híbrido\n 4 - Ataque Dragão\n 5 - Ataque Goblin\n")
     iter = int(input("Quantas vezes você deseja executar o script?"))
+    num_vilas = 2
     espera_carrinho = 5
     if modo in ["1", "2", "3"]:
-
         espera_carrinho = int(input("Quantas batalhas antes de coletar o carrinho?\n"))
+        num_vilas = int(input("Quantas vilas na casa do construtor?\n 1 - Uma vila\n 2 - Duas vilas\n"))
 
     for i in range(0, iter):
         if modo == "1":
             perder()
-            time.sleep(3)
+            time.sleep(2)
 
         elif modo == "2":
-            ganhar()
-            time.sleep(3)
+            if num_vilas == 1:
+                ganhar_uma()
+            else:
+                ganhar_duas()
+            time.sleep(2)
 
         elif modo == "3":
-            ganhar()
-            time.sleep(3)
+            if num_vilas == 1:
+                ganhar_uma()
+            else:
+                ganhar_duas()
+            time.sleep(2)
             perder()
-            time.sleep(3)
+            time.sleep(2)
 
         elif modo == "4":
             ataque_dragao()
-            time.sleep(3)
+            time.sleep(2)
         
         elif modo == "5":
             ataque_goblin()
-            time.sleep(3)
+            time.sleep(2)
 
         
 
