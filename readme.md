@@ -1,1 +1,0 @@
-usar pyinstaller --onefile --add-data "carrinho;carrinho" seu_script.py
