@@ -329,7 +329,7 @@ def perder():
     render()
 
 
-def ataque_dragao():
+def ataque_dragao(herois):
     procurar_partida()
     time.sleep(3)
 
@@ -342,12 +342,22 @@ def ataque_dragao():
     clicar('posicao_dragao_1')
     clicar('posicao_dragao_2')
     clicar('posicao_dragao_3')
+    
+    if herois:
+        if rei_bar:
+            clicar('selecionar_tropa_6')
+            clicar('posicao_dragao_1')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
     # Posicionar tropas de afunilamento
     clicar('posicao_dragao_13')
     clicar('posicao_dragao_14')
     clicar('posicao_dragao_15')
+
+    if herois:
+        if campea:
+            clicar('selecionar_tropa_7')
+            clicar('posicao_dragao_15')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
     # Posicionar tropas centrais
@@ -362,6 +372,13 @@ def ataque_dragao():
     clicar('posicao_dragao_12')
     clicar('selecionar_tropa_q')
     clicar('posicao_dragao_12')
+    if herois:
+        if guardiao:
+            clicar('selecionar_tropa_4')
+            clicar('posicao_dragao_6')
+        if rainha_arq:
+            clicar('selecionar_tropa_5')
+            clicar('posicao_dragao_6')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
     # Esperar as tropas se afunilarem
@@ -383,7 +400,13 @@ def ataque_dragao():
     clicar('selecionar_tropa_3')
     clicar('pocao_de_furia_4')
     clicar('pocao_de_furia_5')
-
+    # Ativar habilidades dos heróis
+    if herois:
+        clicar('selecionar_tropa_4')
+        clicar('selecionar_tropa_5')
+        clicar('selecionar_tropa_6')
+        clicar('selecionar_tropa_7')
+        
     # Esperar o ataque terminar
     time.sleep(85)
     render()
@@ -415,11 +438,20 @@ def ataque_goblin():
     
 # Executar a sequência de automação
 if __name__ == "__main__":
-    modo = input("Qual modo deseja executar?\n 1 - Perder\n 2 - Ganhar\n 3 - Híbrido\n 4 - Ataque Dragão\n 5 - Ataque Goblin\n")
+    modo = int(input("Qual modo deseja executar?\n 1 - Perder\n 2 - Ganhar\n 3 - Híbrido\n 4 - Ataque Dragão\n 5 - Ataque Goblin\n"))
     iter = int(input("Quantas vezes você deseja executar o script?"))
+    herois = 0
+    if modo >=  4:
+        herois = int(input("Deseja usar heróis no ataque?\n 0 - Não\n 1 - Sim\n"))
+        if herois:
+            rei_bar, rainha_arq, guardiao, campea = 0
+            rei_bar = int(input("Rei Bárbaro ativo?\n 0 - Não\n 1 - Sim\n"))
+            rainha_arq = int(input("Rainha Arqueira ativa?\n 0 - Não\n 1 - Sim\n"))
+            guardiao = int(input("Guardião ativo?\n 0 - Não\n 1 - Sim\n"))
+            campea = int(input("Campeã ativa?\n 0 - Não\n 1 - Sim\n"))
     num_vilas = 2
     espera_carrinho = 5
-    if modo in ["1", "2", "3"]:
+    if modo <= 3:
         espera_carrinho = int(input("Quantas batalhas antes de coletar o carrinho?\n"))
         num_vilas = int(input("Quantas vilas na casa do construtor?\n 1 - Uma vila\n 2 - Duas vilas\n"))
 
@@ -445,7 +477,7 @@ if __name__ == "__main__":
             time.sleep(2)
 
         elif modo == "4":
-            ataque_dragao()
+            ataque_dragao(herois)
             time.sleep(2)
         
         elif modo == "5":
