@@ -510,11 +510,11 @@ if __name__ == "__main__":
     herois = 0
     if modo >=  4:
         herois = int(input("Deseja usar heróis no ataque?\n 0 - Não\n 1 - Sim\n"))
+        rei = {'ativo' : 0, 'sel' : None}
+        rainha = {'ativo' : 0, 'sel' : None}
+        guardiao = {'ativo' : 0, 'sel' : None}
+        campea = {'ativo' : 0, 'sel' : None}
         if herois:
-            rei = {'ativo' : 0, 'sel' : None}
-            rainha = {'ativo' : 0, 'sel' : None}
-            guardiao = {'ativo' : 0, 'sel' : None}
-            campea = {'ativo' : 0, 'sel' : None}
             rei['ativo'] = int(input("Rei Bárbaro ativo?\n 0 - Não\n 1 - Sim\n"))
             rainha['ativo'] = int(input("Rainha Arqueira ativa?\n 0 - Não\n 1 - Sim\n"))
             guardiao['ativo'] = int(input("Guardião ativo?\n 0 - Não\n 1 - Sim\n"))
