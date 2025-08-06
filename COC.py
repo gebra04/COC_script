@@ -167,32 +167,33 @@ def coletar_carrinho():
 
 
 def posicionar_tropa():
+        arrastar(botoes['arrastar_baixo'], botoes['arrastar_cima'])
         clicar('selecionar_tropa_0')
-        clicar('posicionar_tropa')
+        clicar_coordenadas((444, 360))
         time.sleep(random.uniform(0.1, 0.2))
         clicar('selecionar_tropa_1')
-        clicar('posicionar_tropa')
+        clicar_coordenadas((444, 360))
         time.sleep(random.uniform(0.1, 0.2))
         clicar('selecionar_tropa_2')
-        clicar('posicionar_tropa')
+        clicar_coordenadas((444, 360))
         time.sleep(random.uniform(0.1, 0.2))
         clicar('selecionar_tropa_3')
-        clicar('posicionar_tropa')
+        clicar_coordenadas((444, 360))
         time.sleep(random.uniform(0.1, 0.2))
         clicar('selecionar_tropa_4')
-        clicar('posicionar_tropa')
+        clicar_coordenadas((444, 360))
         time.sleep(random.uniform(0.1, 0.2))
         clicar('selecionar_tropa_5')
-        clicar('posicionar_tropa')
+        clicar_coordenadas((444, 360))
         time.sleep(random.uniform(0.1, 0.2))
         clicar('selecionar_tropa_6')
-        clicar('posicionar_tropa')
+        clicar_coordenadas((444, 360))
         time.sleep(random.uniform(0.1, 0.2))
         clicar('selecionar_tropa_7')
-        clicar('posicionar_tropa')
+        clicar_coordenadas((444, 360))
         time.sleep(random.uniform(0.1, 0.2))
         clicar('selecionar_tropa_8')
-        clicar('posicionar_tropa')
+        clicar_coordenadas((444, 360))
         time.sleep(random.uniform(0.1, 0.2))
 
 
@@ -294,11 +295,13 @@ def ataque():
     time.sleep(9 + random.uniform(0.1, 0.2))
     clicar('selecionar_tropa_3')
     clicar('selecionar_tropa_4')
+    time.sleep(3)
+    clicar('selecionar_tropa_0')
     time.sleep(9 + random.uniform(0.1, 0.2))
     clicar('selecionar_tropa_5')
     clicar('selecionar_tropa_6')
-    clicar('selecionar_tropa_0')
-        
+    # clicar('selecionar_tropa_0') Para  maquina voadora
+
 
 def ganhar_uma():
     procurar_partida()
@@ -318,7 +321,7 @@ def ganhar_uma():
 def ganhar_duas():
     procurar_partida()
     ataque()
-    time.sleep(40)
+    time.sleep(70)
     ataque()
     time.sleep(35)
     clicar('render_se')
