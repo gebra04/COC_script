@@ -153,7 +153,7 @@ def coletar_carrinho():
     """
     Função para coletar o carrinho de recursos.
     """
-    arrastar(botoes['arrastar_inicio'], botoes['arrastar_fim'])
+    arrastar(botoes['arrastar_cima'], botoes['arrastar_baixo'])
     time.sleep(delay + random.uniform(0.1, 0.2))
 
     clicar_por_imagem('carrinho')
@@ -321,9 +321,9 @@ def ganhar_uma():
 def ganhar_duas():
     procurar_partida()
     ataque()
-    time.sleep(70)
+    time.sleep(60)
     ataque()
-    time.sleep(35)
+    time.sleep(22)
     clicar('render_se')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
