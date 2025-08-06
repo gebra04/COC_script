@@ -514,6 +514,7 @@ if __name__ == "__main__":
         rainha = {'ativo' : 0, 'sel' : None}
         guardiao = {'ativo' : 0, 'sel' : None}
         campea = {'ativo' : 0, 'sel' : None}
+        sel_pocao = None
         if herois:
             rei['ativo'] = int(input("Rei Bárbaro ativo?\n 0 - Não\n 1 - Sim\n"))
             rainha['ativo'] = int(input("Rainha Arqueira ativa?\n 0 - Não\n 1 - Sim\n"))
