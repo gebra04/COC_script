@@ -355,12 +355,11 @@ def ataque_dragao(herois, rei, rainha, guardiao, campea, sel_pocao):
     time.sleep(delay + random.uniform(0.1, 0.2))
 
     # Posicionar tropas de afunilamento
-    if herois:
-        if rei['ativo']:
-            clicar(rei['sel'])
-            clicar('posicao_dragao_1')
-            clicar('selecionar_tropa_2')
-            clicar('posicao_dragao_1')
+    if rei['ativo']:
+        clicar(rei['sel'])
+        clicar('posicao_dragao_1')
+        clicar('selecionar_tropa_2')
+        clicar('posicao_dragao_1')
             
     clicar('selecionar_tropa_1')
     clicar('posicao_dragao_1')
@@ -373,13 +372,13 @@ def ataque_dragao(herois, rei, rainha, guardiao, campea, sel_pocao):
     clicar('posicao_dragao_14')
     clicar('posicao_dragao_15')
 
-    if herois:
-        if campea['ativo']:
-            clicar(campea['sel'])
-            clicar('posicao_dragao_15')
+    if campea['ativo']:
+        clicar(campea['sel'])
+        clicar('posicao_dragao_15')
     time.sleep(delay + random.uniform(0.1, 0.2))
 
-    # Posicionar tropas centrais
+    # Posicionar tropas centrais]
+    clicar('selecionar_tropa_1')
     clicar('posicao_dragao_4')
     clicar('posicao_dragao_5')
     clicar('posicao_dragao_6')
@@ -563,7 +562,3 @@ if __name__ == "__main__":
             coletar_carrinho()
         time.sleep(1)
         print(f"{i + 1}a iteração concluída.")
-
-    #     recursos = verificar_recursos()
-    #     print(f"Recursos verificados: {recursos}")
-        
