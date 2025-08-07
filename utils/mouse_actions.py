@@ -42,3 +42,14 @@ def gerar_pontos_na_reta(xi, yi, xf, yf, num_pontos=8):
         y = int(round(yi + (yf - yi) * fator_aleatorio))
         pontos.append((x, y))
     return pontos
+
+def gerar_pontos_nao_aleatorios(xi, yi, xf, yf, num_pontos=3):
+    """Gera uma lista de pontos que dividem a reta em partes iguais, de acordo
+    com o número de pontos especificado."""
+    pontos = []
+    for i in range(num_pontos):
+        fator = i / (num_pontos - 1)  # Varia de 0 a 1
+        x = int(round(xi + (xf - xi) * fator))
+        y = int(round(yi + (yf - yi) * fator))
+        pontos.append((x, y))
+    return pontos

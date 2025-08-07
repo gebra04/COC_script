@@ -7,7 +7,7 @@ from attacks.attack_utils import procurar_partida, render
 from config.constants import DELAY_PADRAO, BOTOES, CANTOS, RETAS
 
 
-def ataque_dragao(herois, rei, rainha, guardiao, campea, sel_pocao):
+def ataque_dragao(herois, rei, rainha, guardiao, campea, pocao):
     procurar_partida()
     time.sleep(3)
 
@@ -65,7 +65,7 @@ def ataque_dragao(herois, rei, rainha, guardiao, campea, sel_pocao):
     time.sleep(8)
 
     # Usar poções de fúria
-    clicar(sel_pocao)
+    clicar(pocao['sel'])
     clicar('pocao_de_furia_1')
     clicar('pocao_de_furia_2')
     clicar('pocao_de_furia_3')
@@ -78,7 +78,7 @@ def ataque_dragao(herois, rei, rainha, guardiao, campea, sel_pocao):
     time.sleep(12)
 
     # Usar últimas poções de fúria
-    clicar(sel_pocao)
+    clicar(pocao['sel'])
     clicar('pocao_de_furia_4')
     clicar('pocao_de_furia_5')
 
@@ -95,7 +95,7 @@ def ataque_dragao(herois, rei, rainha, guardiao, campea, sel_pocao):
     render()
     
 
-def ataque_goblin(herois, rei, rainha, guardiao, campea, sel_pocao):
+def ataque_goblin(herois, rei, rainha, guardiao, campea, pocao):
     procurar_partida()
     time.sleep(2)
 
@@ -126,7 +126,7 @@ def ataque_goblin(herois, rei, rainha, guardiao, campea, sel_pocao):
     for reta in RETAS:
         if i == 2:                           
             arrastar(BOTOES['arrastar_cima'], BOTOES['arrastar_baixo'])
-            clicar(sel_pocao)
+            clicar(pocao['sel'])
             clicar_coordenadas((440, 200))
             clicar_coordenadas((440, 260))
             clicar_coordenadas((440, 320))
@@ -142,7 +142,7 @@ def ataque_goblin(herois, rei, rainha, guardiao, campea, sel_pocao):
                     clicar(guardiao['sel'])
                 if rainha['ativo']:
                     clicar(rainha['sel'])
-            clicar(sel_pocao)
+            clicar(pocao['sel'])
             clicar_coordenadas((380, 310))
             clicar_coordenadas((500, 310))
             clicar('selecionar_tropa_1')
