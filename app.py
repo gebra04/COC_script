@@ -3,9 +3,11 @@ import tkinter as tk
 import time
 import json
 import os
+import keyboard
 from attacks.attack_utils import coletar_carrinho, ajustar_hotbar
-from attacks.builder_base import perder, ganhar_uma, ganhar_duas
+from attacks.builder_base import perder, ganhar_uma, ganhar_duas, hibrido
 from attacks.home_base import ataque_dragao, ataque_goblin
+from utils.stop_handler import wait_and_check, setup_stop_key, teardown_stop_key, reset_stop_flag, get_stop_flag
 
 # Definindo o tema da interface
 ctk.set_appearance_mode("Dark")
@@ -18,39 +20,38 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        # Configuração da janela
-        self.title("Automação Clash of Clans")
-        self.geometry("600x550")
+        self.title("Script COC")
+        self.geometry("550x900")
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
         self.saved_configs = {}
 
-        # Container principal e abas
         self.tab_view = ctk.CTkTabview(self, command=self._on_tab_change)
         self.tab_view.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
         
         self.home_tab = self.tab_view.add("Vila Principal")
         self.builder_tab = self.tab_view.add("Vila do Construtor")
 
-        # Configuração da UI
         self.setup_home_tab()
         self.setup_builder_tab()
         self.setup_global_options()
 
         self.carregar_nomes_configs_salvas()
-
+        
     def _on_tab_change(self):
         """Atualiza a interface com as configurações padrão ao mudar de aba."""
         self.config_selector.set("(Nenhuma)")
         current_tab = self.tab_view.get()
         if current_tab == "Vila Principal":
             self.attack_home_select.set('Ataque Dragão')
-            self.heroi_rei_switch.set(False)
-            self.heroi_rainha_switch.set(False)
-            self.heroi_guardiao_switch.set(False)
-            self.heroi_campea_switch.set(False)
+            self.heroi_rei_switch.deselect()
+            self.heroi_rainha_switch.deselect()
+            self.heroi_guardiao_switch.deselect()
+            self.heroi_campea_switch.deselect()
             self.pocoes_select.set("4")
+            self.maquina_cerco_switch.deselect()
+            self.troops_select.set("2")
         elif current_tab == "Vila do Construtor":
             self.attack_builder_select.set('Perder')
             self.builder_vilas_var.set(2)
@@ -81,8 +82,18 @@ class App(ctk.CTk):
         self.pocoes_select.set("4")
         self.pocoes_select.pack(pady=5, padx=10, fill="x")
 
+        ctk.CTkLabel(self.home_tab, text="Exército:", font=("Helvetica", 12, "bold")).pack(pady=(10, 0), padx=10, anchor="w")
+        self.maquina_cerco_switch = ctk.CTkSwitch(self.home_tab, text="Máquina de Cerco")
+        self.maquina_cerco_switch.pack(pady=5, padx=10, anchor="w")
+        
+        self.troops_label = ctk.CTkLabel(self.home_tab, text="Número de tropas:", font=("Helvetica", 12, "bold"))
+        self.troops_label.pack(pady=(10, 0), padx=10, anchor="w")
+        self.troops_select = ctk.CTkOptionMenu(self.home_tab, values=[str(i) for i in range(1, 11)])
+        self.troops_select.set("2")
+        self.troops_select.pack(pady=5, padx=10, fill="x")
+
     def setup_builder_tab(self):
-        ataques_builder = ['Perder', 'Ganhar']
+        ataques_builder = ['Perder', 'Ganhar', "Híbrido"]
         
         ctk.CTkLabel(self.builder_tab, text="Selecione o Ataque:", font=("Helvetica", 12, "bold")).pack(pady=(10, 0), padx=10, anchor="w")
         self.attack_builder_select = ctk.CTkOptionMenu(self.builder_tab, values=ataques_builder)
@@ -129,6 +140,12 @@ class App(ctk.CTk):
         self.run_button = ctk.CTkButton(self, text="INICIAR AUTOMAÇÃO", command=self.iniciar_automacao, fg_color="green")
         self.run_button.grid(row=2, column=0, padx=20, pady=(0, 20), sticky="ew")
 
+        self.key_selector_label = ctk.CTkLabel(self, text="Tecla de atalho para encerrar o ataque:")
+        self.key_selector_label.grid(row=3, column=0, padx=20, pady=(10, 0), sticky="w")
+        self.key_selector_entry = ctk.CTkEntry(self, width=50, placeholder_text="F10")
+        self.key_selector_entry.grid(row=3, column=0, padx=(230, 20), pady=(10, 20), sticky="w")
+        self.key_selector_entry.insert(0, "f10")
+
     def log_to_console(self, message):
         print(message)
 
@@ -155,7 +172,6 @@ class App(ctk.CTk):
     def _get_config_data(self):
         """Retorna os dados da configuração da aba ativa."""
         current_tab = self.tab_view.get()
-        # Adiciona o campo de iterações à configuração da aba ativa
         config_data = {'iteracoes': self.iter_entry.get()}
 
         if current_tab == "Vila Principal":
@@ -165,13 +181,17 @@ class App(ctk.CTk):
                 'heroi_rainha': {'ativo': self.heroi_rainha_switch.get()},
                 'heroi_guardiao': {'ativo': self.heroi_guardiao_switch.get()},
                 'heroi_campea': {'ativo': self.heroi_campea_switch.get()},
-                'num_pocoes': self.pocoes_select.get()
+                'num_pocoes': self.pocoes_select.get(),
+                'maquina_cerco': self.maquina_cerco_switch.get(),
+                'num_tropas': self.troops_select.get(),
+                'stop_key': self.key_selector_entry.get()
             })
         elif current_tab == "Vila do Construtor":
             config_data.update({
                 'tipo_ataque': self.attack_builder_select.get(),
                 'num_vilas': self.builder_vilas_var.get(),
-                'espera_carrinho': self.carrinho_entry.get()
+                'espera_carrinho': self.carrinho_entry.get(),
+                'stop_key': self.key_selector_entry.get()
             })
         return config_data
 
@@ -179,34 +199,34 @@ class App(ctk.CTk):
         """Aplica os dados de uma configuração à aba ativa."""
         current_tab = self.tab_view.get()
 
-        # Aplica o valor de iterações a partir da configuração salva
         self.iter_entry.delete(0, 'end')
         self.iter_entry.insert(0, str(config_data.get('iteracoes', 1)))
+        
+        self.key_selector_entry.delete(0, 'end')
+        self.key_selector_entry.insert(0, config_data.get('stop_key', 'f10'))
 
         if current_tab == "Vila Principal":
             self.attack_home_select.set(config_data.get('tipo_ataque', 'Ataque Dragão'))
             
-            if config_data.get('heroi_rei', {}).get('ativo', False):
-                self.heroi_rei_switch.select()
-            else:
-                self.heroi_rei_switch.deselect()
+            if config_data.get('heroi_rei', {}).get('ativo', False): self.heroi_rei_switch.select()
+            else: self.heroi_rei_switch.deselect()
 
-            if config_data.get('heroi_rainha', {}).get('ativo', False):
-                self.heroi_rainha_switch.select()
-            else:
-                self.heroi_rainha_switch.deselect()
+            if config_data.get('heroi_rainha', {}).get('ativo', False): self.heroi_rainha_switch.select()
+            else: self.heroi_rainha_switch.deselect()
 
-            if config_data.get('heroi_guardiao', {}).get('ativo', False):
-                self.heroi_guardiao_switch.select()
-            else:
-                self.heroi_guardiao_switch.deselect()
+            if config_data.get('heroi_guardiao', {}).get('ativo', False): self.heroi_guardiao_switch.select()
+            else: self.heroi_guardiao_switch.deselect()
 
-            if config_data.get('heroi_campea', {}).get('ativo', False):
-                self.heroi_campea_switch.select()
-            else:
-                self.heroi_campea_switch.deselect()
+            if config_data.get('heroi_campea', {}).get('ativo', False): self.heroi_campea_switch.select()
+            else: self.heroi_campea_switch.deselect()
             
             self.pocoes_select.set(config_data.get('num_pocoes', "4"))
+            
+            if config_data.get('maquina_cerco', False): self.maquina_cerco_switch.select()
+            else: self.maquina_cerco_switch.deselect()
+
+            self.troops_select.set(config_data.get('num_tropas', "2"))
+            
         elif current_tab == "Vila do Construtor":
             self.attack_builder_select.set(config_data.get('tipo_ataque', 'Perder'))
             self.builder_vilas_var.set(config_data.get('num_vilas', 2))
@@ -248,66 +268,74 @@ class App(ctk.CTk):
     def aplicar_config_callback(self):
         choice = self.config_selector.get()
         self.carregar_config_selecionada(choice)
-
+        
     def iniciar_automacao(self):
         self.log_to_console("--- INICIANDO AUTOMAÇÃO ---")
+        reset_stop_flag()
+        
+        stop_key = self.key_selector_entry.get().strip().lower()
+        setup_stop_key(stop_key)
+        
         try:
             num_iteracoes = int(self.iter_entry.get())
         except ValueError:
             self.log_to_console("Erro: Insira números válidos para Iterações.")
+            teardown_stop_key()
             return
 
         current_tab = self.tab_view.get()
         
         if current_tab == "Vila Principal":
             num_pocoes = int(self.pocoes_select.get())
-            self._executar_ataque_vila_principal(num_iteracoes, num_pocoes)
+            maquina_cerco = self.maquina_cerco_switch.get()
+            num_tropas = int(self.troops_select.get())
+            self._executar_ataque_vila_principal(num_iteracoes, num_pocoes, maquina_cerco, num_tropas)
         elif current_tab == "Vila do Construtor":
             try:
                 espera_carrinho = int(self.carrinho_entry.get())
             except ValueError:
                 self.log_to_console("Erro: Insira um número válido para a coleta do carrinho.")
+                teardown_stop_key()
                 return
             self._executar_ataque_vila_construtor(num_iteracoes, espera_carrinho)
         
-        self.log_to_console("--- AUTOMAÇÃO CONCLUÍDA ---")
+        teardown_stop_key()
+        if not get_stop_flag():
+            self.log_to_console("--- AUTOMAÇÃO CONCLUÍDA ---")
 
-    def _executar_ataque_vila_principal(self, num_iteracoes):
+    def _executar_ataque_vila_principal(self, num_iteracoes, num_pocoes, maquina_cerco, num_tropas):
         tipo_ataque = self.attack_home_select.get()
         
-        herois_ativos = {
+        army = {
             'rei': {'ativo': self.heroi_rei_switch.get(), 'sel': None},
             'rainha': {'ativo': self.heroi_rainha_switch.get(), 'sel': None},
             'guardiao': {'ativo': self.heroi_guardiao_switch.get(), 'sel': None},
             'campea': {'ativo': self.heroi_campea_switch.get(), 'sel': None},
+            'pocoes': {'quantidade': num_pocoes, 'sel': None},
+            'maquina_cerco': {'ativo': maquina_cerco, 'sel': None},
+            'tropas': {'quantidade': num_tropas, 'sel': None}
         }
-        
-        herois_usar = any(h['ativo'] for h in herois_ativos.values())
-        sel_pocao = None
-        
-        if herois_usar:
-            sel_rei, sel_rainha, sel_guardiao, sel_campea, sel_pocao = ajustar_hotbar(
-                herois_ativos['rei'], herois_ativos['rainha'], herois_ativos['guardiao'], herois_ativos['campea']
-            )
-            herois_ativos['rei']['sel'] = sel_rei
-            herois_ativos['rainha']['sel'] = sel_rainha
-            herois_ativos['guardiao']['sel'] = sel_guardiao
-            herois_ativos['campea']['sel'] = sel_campea
+
+        army = ajustar_hotbar(army)
 
         for i in range(num_iteracoes):
+            if get_stop_flag(): return
+            
             if tipo_ataque == 'Ataque Dragão':
-                ataque_dragao(herois_usar, herois_ativos['rei'], herois_ativos['rainha'], herois_ativos['guardiao'], herois_ativos['campea'], sel_pocao, num_pocoes)
+                ataque_dragao(army)
             elif tipo_ataque == 'Ataque Goblin':
-                ataque_goblin(herois_usar, herois_ativos['rei'], herois_ativos['rainha'], herois_ativos['guardiao'], herois_ativos['campea'], sel_pocao, num_pocoes)
+                ataque_goblin(army)
             
             self.log_to_console(f"Vila Principal: {i + 1}a iteração concluída.")
-            time.sleep(1)
+            wait_and_check(1)
 
     def _executar_ataque_vila_construtor(self, num_iteracoes, espera_carrinho):
         tipo_ataque = self.attack_builder_select.get()
         num_vilas = self.builder_vilas_var.get()
 
         for i in range(num_iteracoes):
+            if get_stop_flag(): return
+                
             if tipo_ataque == 'Perder':
                 perder()
             elif tipo_ataque == 'Ganhar':
@@ -315,13 +343,15 @@ class App(ctk.CTk):
                     ganhar_uma()
                 else:
                     ganhar_duas()
+            elif tipo_ataque == "Híbrido":
+                hibrido(num_vilas)
             
             if espera_carrinho > 0 and (i + 1) % espera_carrinho == 0 and (i + 1) < num_iteracoes:
                 self.log_to_console("Coletando carrinho...")
                 coletar_carrinho()
             
             self.log_to_console(f"Vila do Construtor: {i + 1}a iteração concluída.")
-            time.sleep(1)
+            wait_and_check(1)
 
 if __name__ == "__main__":
     app = App()

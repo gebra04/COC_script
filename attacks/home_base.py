@@ -2,22 +2,23 @@
 
 import time
 import random
+import pyautogui
 from utils.mouse_actions import clicar, arrastar, clicar_coordenadas, gerar_pontos_na_reta
 from attacks.attack_utils import procurar_partida, render
 from config.constants import DELAY_PADRAO, BOTOES, CANTOS, RETAS
+from utils.stop_handler import wait_and_check
 
-
-def ataque_dragao(herois, rei, rainha, guardiao, campea, pocao):
+def ataque_dragao(army):
     procurar_partida()
-    time.sleep(3)
+    wait_and_check(3)
 
     # Arrastar a tela
     arrastar(BOTOES['arrastar_baixo'], BOTOES['arrastar_cima'])
-    time.sleep(DELAY_PADRAO + random.uniform(0.1, 0.2))
+    wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
     # Posicionar tropas de afunilamento
-    if rei['ativo']:
-        clicar(rei['sel'])
+    if army['rei']['ativo']:
+        clicar(army['rei']['sel'])
         clicar('posicao_dragao_1')
         clicar('selecionar_tropa_2')
         clicar('posicao_dragao_1')
@@ -26,19 +27,19 @@ def ataque_dragao(herois, rei, rainha, guardiao, campea, pocao):
     clicar('posicao_dragao_1')
     clicar('posicao_dragao_2')
     
-    time.sleep(DELAY_PADRAO + random.uniform(0.1, 0.2))
+    wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
     # Posicionar tropas de afunilamento
     clicar('posicao_dragao_13')
     clicar('posicao_dragao_14')
     clicar('posicao_dragao_15')
 
-    if campea['ativo']:
-        clicar(campea['sel'])
+    if army['campea']['ativo']:
+        clicar(army['campea']['sel'])
         clicar('posicao_dragao_15')
-    time.sleep(DELAY_PADRAO + random.uniform(0.1, 0.2))
+    wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
-    # Posicionar tropas centrais]
+    # Posicionar tropas centrais
     clicar('selecionar_tropa_1')
     clicar('posicao_dragao_4')
     clicar('posicao_dragao_5')
@@ -51,68 +52,71 @@ def ataque_dragao(herois, rei, rainha, guardiao, campea, pocao):
     clicar('posicao_dragao_11')
     clicar('posicao_dragao_12')
     clicar('selecionar_tropa_0')
-    clicar('posicao_dragao_12')
-    if herois:
-        if guardiao['ativo']:
-            clicar(guardiao['sel'])
-            clicar('posicao_dragao_6')
-        if rainha['ativo']:
-            clicar(rainha['sel'])
-            clicar('posicao_dragao_6')
-    time.sleep(DELAY_PADRAO + random.uniform(0.1, 0.2))
+    clicar('posicao_dragao_6')
+
+    if army['guardiao']['ativo']:
+        clicar(army['guardiao']['sel'])
+        clicar('posicao_dragao_6')
+    if army['rainha']['ativo']:
+        clicar(army['rainha']['sel'])
+        clicar('posicao_dragao_6')
+
+    wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
     # Esperar as tropas se afunilarem
-    time.sleep(8)
+    wait_and_check(8)
 
     # Usar poções de fúria
-    clicar(pocao['sel'])
+    clicar(army['pocao_1']['sel'])
     clicar('pocao_de_furia_1')
     clicar('pocao_de_furia_2')
     clicar('pocao_de_furia_3')
     # Posicionar máquina de cerco
-    if not rei['ativo']:
+    if not army['rei']['ativo']:
         clicar('selecionar_tropa_2')
         clicar('posicao_dragao_10')
 
     # Esperar a primeira fúria acabar
-    time.sleep(12)
+    wait_and_check(12)
 
     # Usar últimas poções de fúria
-    clicar(pocao['sel'])
+    clicar(army['pocao_1']['sel'])
     clicar('pocao_de_furia_4')
     clicar('pocao_de_furia_5')
 
-    time.sleep(2)
+    wait_and_check(2)
     # Ativar habilidades dos heróis
-    if herois:
-        clicar(guardiao['sel']) if guardiao['ativo'] else None
-        clicar(rainha['sel']) if rainha['ativo'] else None
-        clicar(rei['sel']) if rei['ativo'] else None
-        clicar(campea['sel']) if campea['ativo'] else None
+    if army['guardiao']['ativo']:
+        clicar(army['guardiao']['sel'])
+    if army['rainha']['ativo']:
+        clicar(army['rainha']['sel'])
+    if army['rei']['ativo']:
+        clicar(army['rei']['sel'])
+    if army['campea']['ativo']:
+        clicar(army['campea']['sel'])
 
     # Esperar o ataque terminar
-    time.sleep(85)
+    wait_and_check(85)
     render()
     
 
-def ataque_goblin(herois, rei, rainha, guardiao, campea, pocao):
+def ataque_goblin(army):
     procurar_partida()
-    time.sleep(2)
+    wait_and_check(2)
 
     arrastar(BOTOES['arrastar_cima'], BOTOES['arrastar_baixo'])
-    if herois:
-        if rei['ativo']:
-            clicar(rei['sel'])
-            clicar_coordenadas(CANTOS['C'])
-        if campea['ativo']:
-            clicar(campea['sel'])
-            clicar_coordenadas(CANTOS['C'])
-        if guardiao['ativo']:
-            clicar(guardiao['sel'])
-            clicar_coordenadas(CANTOS['C'])
-        if rainha['ativo']:
-            clicar(rainha['sel'])
-            clicar_coordenadas(CANTOS['C'])
+    if army['rei']['ativo']:
+        clicar(army['rei']['sel'])
+        clicar_coordenadas(CANTOS['C'])
+    if army['campea']['ativo']:
+        clicar(army['campea']['sel'])
+        clicar_coordenadas(CANTOS['C'])
+    if army['guardiao']['ativo']:
+        clicar(army['guardiao']['sel'])
+        clicar_coordenadas(CANTOS['C'])
+    if army['rainha']['ativo']:
+        clicar(army['rainha']['sel'])
+        clicar_coordenadas(CANTOS['C'])
 
     clicar('selecionar_tropa_0')
     clicar_coordenadas(CANTOS['C'])
@@ -126,23 +130,22 @@ def ataque_goblin(herois, rei, rainha, guardiao, campea, pocao):
     for reta in RETAS:
         if i == 2:                           
             arrastar(BOTOES['arrastar_cima'], BOTOES['arrastar_baixo'])
-            clicar(pocao['sel'])
+            clicar(army['pocao_1']['sel'])
             clicar_coordenadas((440, 200))
             clicar_coordenadas((440, 260))
             clicar_coordenadas((440, 320))
             clicar('selecionar_tropa_1')
 
         if i == 3:
-            if herois:
-                if rei['ativo']:
-                    clicar(rei['sel'])
-                if campea['ativo']:
-                    clicar(campea['sel'])
-                if guardiao['ativo']:
-                    clicar(guardiao['sel'])
-                if rainha['ativo']:
-                    clicar(rainha['sel'])
-            clicar(pocao['sel'])
+            if army['rei']['ativo']:
+                clicar(army['rei']['sel'])
+            if army['campea']['ativo']:
+                clicar(army['campea']['sel'])
+            if army['guardiao']['ativo']:
+                clicar(army['guardiao']['sel'])
+            if army['rainha']['ativo']:
+                clicar(army['rainha']['sel'])
+            clicar(army['pocao_1']['sel'])
             clicar_coordenadas((380, 310))
             clicar_coordenadas((500, 310))
             clicar('selecionar_tropa_1')
@@ -158,6 +161,6 @@ def ataque_goblin(herois, rei, rainha, guardiao, campea, pocao):
                 
         i += 1
 
-    time.sleep(15)
+    wait_and_check(15)
     render()
     
