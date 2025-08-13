@@ -69,19 +69,25 @@ def ataque():
 def ajustar_hotbar(army):
     """Ajusta a hotbar de acordo com os heróis selecionados."""
 
+    for tropa in range (army['troops']['quantidade']):
+        key = f"selecionar_tropa_{tropa+1}"
+        if key not in army:
+            army[key] = {}
+        army[key]['sel'] = f"selecionar_tropa_{tropa+1}"
+        
     if army['guardiao']['ativo']:
-        army['guardiao']['sel'] = f"selecionar_tropa_{3}"
+        army['guardiao']['sel'] = f"selecionar_tropa_{army['tropas']['quantidade']}"
     if army['rainha']['ativo']:
-        army['rainha']['sel'] = f"selecionar_tropa_{3 + army['guardiao']['ativo']}"
+        army['rainha']['sel'] = f"selecionar_tropa_{army['tropas']['quantidade'] + army['guardiao']['ativo']}"
     if army['rei']['ativo']:
-        army['rei']['sel'] = f"selecionar_tropa_{3 + army['guardiao']['ativo'] + army['rainha']['ativo']}"
+        army['rei']['sel'] = f"selecionar_tropa_{army['tropas']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo']}"
     if army['campea']['ativo']:
-        army['campea']['sel'] = f"selecionar_tropa_{3 + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo']}"
+        army['campea']['sel'] = f"selecionar_tropa_{army['tropas']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo']}"
 
     for i in range(army['pocoes']['quantidade']):
         key = f"pocao_{i+1}"
         if key not in army:
             army[key] = {}
-        army[key]['sel'] = f"selecionar_tropa_{3 + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo'] + army['campea']['ativo'] + i}"
+        army[key]['sel'] = f"selecionar_tropa_{army['tropas']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo'] + army['campea']['ativo'] + i}"
 
     return army
