@@ -1,7 +1,7 @@
 # main.py
 
 import time
-from attacks.attack_utils import coletar_carrinho, ajustar_hotbar
+from attacks.attack_utils import coletar_carrinho, ajustar_hotbar, abastecer_castelo
 from attacks.builder_base import perder, ganhar_uma, ganhar_duas
 from attacks.home_base import ataque_goblin, ataque_dragao
 
@@ -47,6 +47,7 @@ if __name__ == "__main__":
         espera_carrinho = int(input("Quantas batalhas antes de coletar o carrinho?\n"))
         num_vilas = int(input("Quantas vilas na casa do construtor?\n 1 - Uma vila\n 2 - Duas vilas\n"))
 
+    castelo = int(input("Deseja abastecer o castelo?\n 0 - Não\n 1 - Sim\n"))
     for i in range(0, iter):
         if modo == 1:
             perder()
@@ -68,7 +69,11 @@ if __name__ == "__main__":
             perder()
             time.sleep(2)
 
-        elif modo == 4:
+                    
+        if modo >= 4 and castelo:
+            abastecer_castelo()
+
+        if modo == 4:
             ataque_dragao(army)
             time.sleep(4)
         
@@ -76,9 +81,14 @@ if __name__ == "__main__":
             ataque_goblin(army)
             time.sleep(4)
 
+        else:
+            print("Erro, digite uma das opções")
+
         
         if i % espera_carrinho == 0 and modo <= 3 and (i != 0):
             coletar_carrinho()
+
+
 
         time.sleep(3)
         print(f"{i + 1}a iteração concluída.")
