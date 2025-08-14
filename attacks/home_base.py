@@ -20,10 +20,12 @@ def ataque_dragao(army):
     if army['rei']['ativo']:
         clicar(army['rei']['sel'])
         clicar('posicao_dragao_1')
-        clicar('selecionar_tropa_2')
+    
+    if army['siege_machine']['ativo']:
+        clicar(army['siege_machine']['sel'])
         clicar('posicao_dragao_1')
             
-    clicar('selecionar_tropa_1')
+    clicar(army['tropa_1']['sel'])
     clicar('posicao_dragao_1')
     clicar('posicao_dragao_2')
     
@@ -40,7 +42,7 @@ def ataque_dragao(army):
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
     # Posicionar tropas centrais
-    clicar('selecionar_tropa_1')
+    clicar(army['tropa_1']['sel'])
     clicar('posicao_dragao_4')
     clicar('posicao_dragao_5')
     clicar('posicao_dragao_6')
@@ -51,7 +53,6 @@ def ataque_dragao(army):
     clicar('posicao_dragao_10')
     clicar('posicao_dragao_11')
     clicar('posicao_dragao_12')
-    clicar('selecionar_tropa_0')
     clicar('posicao_dragao_6')
 
     if army['guardiao']['ativo']:

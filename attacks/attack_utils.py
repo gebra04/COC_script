@@ -70,7 +70,7 @@ def ajustar_hotbar(army):
     """Ajusta a hotbar de acordo com os heróis selecionados."""
 
     for tropa in range (army['troops']['quantidade']):
-        key = f"selecionar_tropa_{tropa+1}"
+        key = f"tropa_{tropa+1}"
         if key not in army:
             army[key] = {}
         army[key]['sel'] = f"selecionar_tropa_{tropa+1}"
