@@ -24,10 +24,10 @@ def coletar_carrinho():
 def posicionar_tropa():
     """Posiciona troops para um ataque padrão."""
     arrastar(BOTOES['arrastar_baixo'], BOTOES['arrastar_cima'])
-    for i in range(9):
+    for i in range(1,9):
         clicar(f'selecionar_tropa_{i}')
         clicar_coordenadas((444, 360))
-        wait_and_check(random.uniform(0.1, 0.2))
+        wait_and_check(random.uniform(0, 0.1))
 
 def procurar_partida():
     """Procura uma partida no jogo."""
@@ -53,18 +53,18 @@ def ataque():
     posicionar_tropa()
     # Acionar habilidades ao longo do ataque
     wait_and_check(8 + random.uniform(0.1, 0.2))
-    clicar('selecionar_tropa_1')
     clicar('selecionar_tropa_2')
-    clicar('selecionar_tropa_7')
-    clicar('selecionar_tropa_8')
-    wait_and_check(9 + random.uniform(0.1, 0.2))
     clicar('selecionar_tropa_3')
-    clicar('selecionar_tropa_4')
-    wait_and_check(3)
-    clicar('selecionar_tropa_0')
+    clicar('selecionar_tropa_8')
+    clicar('selecionar_tropa_9')
     wait_and_check(9 + random.uniform(0.1, 0.2))
+    clicar('selecionar_tropa_4')
     clicar('selecionar_tropa_5')
+    wait_and_check(3)
+    clicar('selecionar_tropa_1')
+    wait_and_check(9 + random.uniform(0.1, 0.2))
     clicar('selecionar_tropa_6')
+    clicar('selecionar_tropa_7')
 
 def ajustar_hotbar(army):
     """Ajusta a hotbar de acordo com os heróis selecionados."""
