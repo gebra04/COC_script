@@ -58,7 +58,7 @@ def ataque_dragao(army):
     if army['guardiao']['ativo']:
         clicar(army['guardiao']['sel'])
         clicar('posicao_dragao_6')
-    if army['rainha']['ativo']:
+    if army['rainha']['ativo']: 
         clicar(army['rainha']['sel'])
         clicar('posicao_dragao_6')
 
