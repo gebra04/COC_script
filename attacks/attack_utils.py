@@ -22,7 +22,7 @@ def coletar_carrinho():
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
 def posicionar_tropa():
-    """Posiciona tropas para um ataque padrão."""
+    """Posiciona troops para um ataque padrão."""
     arrastar(BOTOES['arrastar_baixo'], BOTOES['arrastar_cima'])
     for i in range(9):
         clicar(f'selecionar_tropa_{i}')
@@ -76,18 +76,18 @@ def ajustar_hotbar(army):
         army[key]['sel'] = f"selecionar_tropa_{tropa+1}"
         
     if army['guardiao']['ativo']:
-        army['guardiao']['sel'] = f"selecionar_tropa_{army['tropas']['quantidade']}"
+        army['guardiao']['sel'] = f"selecionar_tropa_{army['troops']['quantidade']}"
     if army['rainha']['ativo']:
-        army['rainha']['sel'] = f"selecionar_tropa_{army['tropas']['quantidade'] + army['guardiao']['ativo']}"
+        army['rainha']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + army['guardiao']['ativo']}"
     if army['rei']['ativo']:
-        army['rei']['sel'] = f"selecionar_tropa_{army['tropas']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo']}"
+        army['rei']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo']}"
     if army['campea']['ativo']:
-        army['campea']['sel'] = f"selecionar_tropa_{army['tropas']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo']}"
+        army['campea']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo']}"
 
     for i in range(army['pocoes']['quantidade']):
         key = f"pocao_{i+1}"
         if key not in army:
             army[key] = {}
-        army[key]['sel'] = f"selecionar_tropa_{army['tropas']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo'] + army['campea']['ativo'] + i}"
+        army[key]['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo'] + army['campea']['ativo'] + i}"
 
     return army
