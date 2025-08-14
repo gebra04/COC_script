@@ -84,7 +84,7 @@ def ajustar_hotbar(army):
     if army['campea']['ativo']:
         army['campea']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo']}"
 
-    for i in range(army['pocoes']['quantidade']):
+    for i in range(army['pocao']['quantidade']):
         key = f"pocao_{i+1}"
         if key not in army:
             army[key] = {}

@@ -15,7 +15,7 @@ if __name__ == "__main__":
         'rainha': {'ativo': 0, 'sel': 0},
         'guardiao': {'ativo': 0, 'sel': 0},
         'campea': {'ativo': 0, 'sel': 0},
-        'pocao': {'ativo': 0, 'sel': 0},
+        'pocao': {'quantidade': 1, 'sel': 0},
         'siege_machine': {'ativo': 0, 'sel': 0}
     }
     herois = 0
@@ -34,6 +34,7 @@ if __name__ == "__main__":
     
         if personalizar:
             army['troops']['quantidade'] = int(input("Quantas tropas você vai usar no ataque?\n"))
+            army['pocao']['quantidade'] = int(input("Quantas poções você vai usar no ataque?\n"))
             army['siege_machine']['ativo'] = int(input("Deseja usar máquina de cerco?\n 0 - Não\n 1 - Sim\n"))
 
         # army['rei']['sel'], army['rainha']['sel'], army['guardiao']['sel'], 
