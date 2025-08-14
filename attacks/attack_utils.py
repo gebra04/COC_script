@@ -76,18 +76,18 @@ def ajustar_hotbar(army):
         army[key]['sel'] = f"selecionar_tropa_{tropa+1}"
         
     if army['guardiao']['ativo']:
-        army['guardiao']['sel'] = f"selecionar_tropa_{army['troops']['quantidade']}"
+        army['guardiao']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + 1}"
     if army['rainha']['ativo']:
-        army['rainha']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + army['guardiao']['ativo']}"
+        army['rainha']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + 1 + army['guardiao']['ativo']}"
     if army['rei']['ativo']:
-        army['rei']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo']}"
+        army['rei']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + 1 + army['guardiao']['ativo'] + army['rainha']['ativo']}"
     if army['campea']['ativo']:
-        army['campea']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo']}"
+        army['campea']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + 1 + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo']}"
 
     for i in range(army['pocao']['quantidade']):
         key = f"pocao_{i+1}"
         if key not in army:
             army[key] = {}
-        army[key]['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo'] + army['campea']['ativo'] + i}"
+        army[key]['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + 1 + army['guardiao']['ativo'] + army['rainha']['ativo'] + army['rei']['ativo'] + army['campea']['ativo'] + i}"
 
     return army
