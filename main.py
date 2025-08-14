@@ -16,7 +16,7 @@ if __name__ == "__main__":
         'guardiao': {'ativo': 0, 'sel': 0},
         'campea': {'ativo': 0, 'sel': 0},
         'pocao': {'quantidade': 1, 'sel': 0},
-        'siege_machine': {'ativo': 0, 'sel': 0}
+        'siege_machine': {'ativo': 1, 'sel': 0}
     }
     herois = 0
     if modo >=  4:
