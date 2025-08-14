@@ -39,7 +39,7 @@ BOTOES = {
     'selecionar_tropa_8': (572 + var(), 470 + var()),
     'selecionar_tropa_9': (632 + var(), 470 + var()),
     'posicionar_tropa': (866 + var(), 276 + var()),
-    'render_se': (55 + var(), 420 + var()),
+    'render_se': (65 + var(), 420 + var()),
     'ok': (522 + var(), 338 + var()),
     'voltar': (442 + var(), 449 + var()),
     'arrastar_inicio': (779 + var(), 264 + var()),
