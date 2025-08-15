@@ -25,6 +25,7 @@ def abastecer_castelo():
     clicar('my_army')
     clicar('pegar_bolo')
     clicar('ok')
+    clicar('atacar')
 
 def posicionar_tropa():
     """Posiciona troops para um ataque padrão."""
