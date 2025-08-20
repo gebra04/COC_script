@@ -3,9 +3,10 @@
 import time
 import random
 from attacks.attack_utils import procurar_partida, ataque, render
-from config.constants import DELAY_PADRAO
-from utils.mouse_actions import clicar
+from config.constants import DELAY_PADRAO, BOTOES
+from utils.mouse_actions import clicar, arrastar, clicar_coordenadas
 from utils.stop_handler import wait_and_check
+
 
 def ganhar_uma():
     """Realiza uma batalha com vitória em uma vila do construtor."""
@@ -26,9 +27,10 @@ def ganhar_duas():
 def perder():
     """Inicia uma batalha e se rende."""    
     procurar_partida()
-    clicar('selecionar_tropa_1')
+    arrastar(BOTOES['arrastar_baixo'], BOTOES['arrastar_cima'])1
+    clicar('selecionar_tropa_2')
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
-    clicar('posicionar_tropa')
+    clicar_coordenadas((444, 360))
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
     render()
 
