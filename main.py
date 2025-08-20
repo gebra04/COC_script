@@ -45,9 +45,13 @@ if __name__ == "__main__":
     espera_carrinho = 5
     if modo <= 3:
         espera_carrinho = int(input("Quantas batalhas antes de coletar o carrinho?\n"))
-        num_vilas = int(input("Quantas vilas na casa do construtor?\n 1 - Uma vila\n 2 - Duas vilas\n"))
+        
+        if modo != 1:
+            num_vilas = int(input("Quantas vilas na casa do construtor?\n 1 - Uma vila\n 2 - Duas vilas\n"))
+    else:
+        castelo = int(input("Deseja abastecer o castelo?\n 0 - Não\n 1 - Sim\n"))
+        
 
-    castelo = int(input("Deseja abastecer o castelo?\n 0 - Não\n 1 - Sim\n"))
     for i in range(0, iter):
         if modo == 1:
             perder()
