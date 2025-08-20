@@ -27,7 +27,7 @@ def ganhar_duas():
 def perder():
     """Inicia uma batalha e se rende."""    
     procurar_partida()
-    arrastar(BOTOES['arrastar_baixo'], BOTOES['arrastar_cima'])1
+    arrastar(BOTOES['arrastar_baixo'], BOTOES['arrastar_cima'])
     clicar('selecionar_tropa_2')
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
     clicar_coordenadas((444, 360))
