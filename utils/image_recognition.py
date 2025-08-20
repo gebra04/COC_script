@@ -5,7 +5,8 @@ import os
 
 def clicar_por_imagem(caminho_da_pasta):
     """Percorre uma pasta e tenta clicar na primeira imagem encontrada."""
-    caminho_da_pasta = f"images/{caminho_da_pasta}"
+    caminho_base = os.path.join(os.path.dirname(__file__), "..", "images")
+    caminho_da_pasta = os.path.join(caminho_base, caminho_da_pasta)
     try:
         arquivos_na_pasta = os.listdir(caminho_da_pasta)
     except FileNotFoundError:
@@ -23,7 +24,9 @@ def clicar_por_imagem(caminho_da_pasta):
                 pyautogui.click(localizacao)
                 print(f"Clicou na imagem '{nome_do_arquivo}' em {localizacao}.")
                 return True
-        except pyautogui.PyAutoGUIException as e:
+        except pyautogui.ImageNotFoundException:
+            print(f"Imagem '{nome_do_arquivo}' não encontrada na tela.")
+        except Exception as e:
             print(f"Erro ao encontrar a imagem '{nome_do_arquivo}': {e}")
         
     print("Nenhuma das imagens na pasta foi encontrada.")
