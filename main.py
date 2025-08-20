@@ -6,7 +6,6 @@ from attacks.builder_base import perder, ganhar_uma, ganhar_duas
 from attacks.home_base import ataque_goblin, ataque_dragao
 
 if __name__ == "__main__":
-    # Sua lógica de entrada do usuário aqui
     modo = int(input("Qual modo deseja executar?\n 1 - Perder\n 2 - Ganhar\n 3 - Híbrido\n 4 - Ataque Dragão\n 5 - Ataque Goblin\n"))
     iter = int(input("Quantas vezes você deseja executar o script?"))
     army = {
@@ -22,23 +21,18 @@ if __name__ == "__main__":
     if modo >=  4:
         herois = int(input("Deseja usar heróis no ataque?\n 0 - Não\n 1 - Sim\n"))
         personalizar = int(input("Deseja personalizar o ataque?\n 0 - Não\n 1 - Sim\n"))
-        # Inicialização dos dicionários de heróis
 
         if herois:
             army['rei']['ativo'] = int(input("Rei Bárbaro ativo?\n 0 - Não\n 1 - Sim\n"))
             army['rainha']['ativo'] = int(input("Rainha Arqueira ativa?\n 0 - Não\n 1 - Sim\n"))
             army['guardiao']['ativo'] = int(input("Guardião ativo?\n 0 - Não\n 1 - Sim\n"))
             army['campea']['ativo'] = int(input("Campeã ativa?\n 0 - Não\n 1 - Sim\n"))
-            # Agora a função ajustar_hotbar está no módulo de ataques genéricos
-            # print(f"sel_rei: {rei['sel']}, rainha: {rainha['sel']}, guardiao: {guardiao['sel']}, campea: {campea['sel']}, sel_pocao: {pocao['sel']}")
     
         if personalizar:
             army['troops']['quantidade'] = int(input("Quantas tropas você vai usar no ataque?\n"))
             army['pocao']['quantidade'] = int(input("Quantas poções você vai usar no ataque?\n"))
             army['siege_machine']['ativo'] = int(input("Deseja usar máquina de cerco?\n 0 - Não\n 1 - Sim\n"))
 
-        # army['rei']['sel'], army['rainha']['sel'], army['guardiao']['sel'], 
-        # army['campea']['sel'], army['pocao']['sel'], army['troops'] = ajustar_hotbar(army)
         army = ajustar_hotbar(army)
 
     num_vilas = 2
@@ -73,15 +67,15 @@ if __name__ == "__main__":
             perder()
             time.sleep(2)
 
-                    
-        if modo >= 4 and castelo:
-            abastecer_castelo()
-
-        if modo == 4:
+        elif modo == 4:
+            if castelo:
+                abastecer_castelo()
             ataque_dragao(army)
             time.sleep(4)
         
         elif modo == 5:
+            if castelo:
+                abastecer_castelo()
             ataque_goblin(army)
             time.sleep(4)
 
