@@ -21,6 +21,12 @@ def coletar_carrinho():
     clicar('fechar')
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
+def abastecer_castelo():
+    clicar('my_army')
+    clicar('pegar_bolo')
+    clicar('ok')
+    clicar('atacar')
+
 def posicionar_tropa():
     """Posiciona troops para um ataque padrão."""
     arrastar(BOTOES['arrastar_baixo'], BOTOES['arrastar_cima'])

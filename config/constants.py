@@ -69,4 +69,7 @@ BOTOES = {
     'pocao_de_furia_5': (508 + var(), 161 + var()),
     'arrastar_cima': (441, 37),
     'arrastar_baixo': (441, 323),
+    'my_army': (45 + var(), 420 + var()),
+    'pegar_bolo': (710 + var(), 415 + var())
+
 }
