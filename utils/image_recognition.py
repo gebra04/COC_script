@@ -5,7 +5,7 @@ import os
 
 def clicar_por_imagem(caminho_da_pasta):
     """Percorre uma pasta e tenta clicar na primeira imagem encontrada."""
-    caminho_da_pasta = f"../images/{caminho_da_pasta}"
+    caminho_da_pasta = f"images/{caminho_da_pasta}"
     try:
         arquivos_na_pasta = os.listdir(caminho_da_pasta)
     except FileNotFoundError:
