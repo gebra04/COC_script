@@ -12,7 +12,7 @@ def coletar_carrinho():
     arrastar(BOTOES['arrastar_cima'], BOTOES['arrastar_baixo'])
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
-    clicar_por_imagem('carrinho')
+    clicar_por_imagem("carrinho")
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
     clicar('coletar')
@@ -52,7 +52,7 @@ def render():
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
     clicar('voltar')
-    wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
+    wait_and_check(3 + DELAY_PADRAO + random.uniform(0.1, 0.2))
 
 def ataque():
     """Função para realizar um ataque padrão."""
