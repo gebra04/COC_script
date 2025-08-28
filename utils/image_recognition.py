@@ -19,7 +19,7 @@ def clicar_por_imagem(caminho_da_pasta):
 
         caminho_completo = os.path.join(caminho_da_pasta, nome_do_arquivo)
         try:
-            localizacao = pyautogui.locateCenterOnScreen(caminho_completo, confidence=0.8)
+            localizacao = pyautogui.locateCenterOnScreen(caminho_completo, confidence=0.4)
             if localizacao:
                 pyautogui.click(localizacao)
                 print(f"Clicou na imagem '{nome_do_arquivo}' em {localizacao}.")
