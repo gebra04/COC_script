@@ -71,13 +71,13 @@ if __name__ == "__main__":
             if castelo:
                 abastecer_castelo()
             ataque_dragao(army)
-            time.sleep(4)
+            time.sleep(8)
         
         elif modo == 5:
             if castelo:
                 abastecer_castelo()
             ataque_goblin(army)
-            time.sleep(4)
+            time.sleep(8)
 
         else:
             print("Erro, digite uma das opções")
