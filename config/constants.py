@@ -27,7 +27,7 @@ def var():
     return random.randint(-2, 2)
 
 BOTOES = {
-    'atacar': (45 + var(), 473 + var()),
+    'atacar': (116 + var(), 403 + var()),
     'encontrar': (660 + var(), 350 + var()),
     'selecionar_tropa_1': (152 + var(), 480 + var()),
     'selecionar_tropa_2': (212 + var(), 480 + var()),
