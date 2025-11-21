@@ -40,7 +40,7 @@ def procurar_partida():
     clicar('atacar')
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
     
-    clicar('encontrar')
+    clicar('attack_army')
     wait_and_check(DELAY_PADRAO + 5 + random.uniform(0.1, 0.2))
 
 def render():

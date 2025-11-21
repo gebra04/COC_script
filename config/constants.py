@@ -70,6 +70,7 @@ BOTOES = {
     'arrastar_cima': (441, 37),
     'arrastar_baixo': (441, 323),
     'my_army': (45 + var(), 420 + var()),
-    'pegar_bolo': (710 + var(), 415 + var())
+    'pegar_bolo': (710 + var(), 415 + var()),
+    'attack_army' : (682 + var(),461 + var())
 
 }
