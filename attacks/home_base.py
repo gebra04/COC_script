@@ -24,8 +24,8 @@ def ataque_dragao(army):
     if army['siege_machine']['ativo']:
         clicar(army['siege_machine']['sel'])
         clicar('posicao_dragao_1')
-            
-    clicar(army['tropa_1']['sel'])
+
+    clicar(army['tropa_' + str(army['troops']['quantidade'])]['sel'])
     clicar('posicao_dragao_1')
     clicar('posicao_dragao_2')
     
@@ -42,7 +42,15 @@ def ataque_dragao(army):
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
 
     # Posicionar tropas centrais
-    clicar(army['tropa_1']['sel'])
+
+    # Programar o posicionamento das tropas extras
+
+    # for t in range(1, army['troops']['quantidade']):
+    #     clicar(army['tropa_' + str(army['troops'][t])]['sel'])
+    #     for _ in range (1, army['tropa_' + str(t)]['unidades_tropa_' + str(t)]):
+    #         clicar('posicao_dragao_' + str(t + 3))
+
+    clicar(army['tropa_' + str(army['troops']['quantidade'])]['sel'])
     clicar('posicao_dragao_4')
     clicar('posicao_dragao_5')
     clicar('posicao_dragao_6')
@@ -127,7 +135,7 @@ def ataque_goblin(army):
     arrastar(BOTOES['arrastar_baixo'], BOTOES['arrastar_cima'])
     i = 0
 
-    clicar('selecionar_tropa_1')
+    clicar('selecionar_tropa_' + army['troops']['quantidade'])
     for reta in RETAS:
         if i == 2:                           
             arrastar(BOTOES['arrastar_cima'], BOTOES['arrastar_baixo'])
@@ -135,7 +143,7 @@ def ataque_goblin(army):
             clicar_coordenadas((440, 200))
             clicar_coordenadas((440, 260))
             clicar_coordenadas((440, 320))
-            clicar('selecionar_tropa_1')
+            clicar('selecionar_tropa_' + army['troops']['quantidade'])
 
         if i == 3:
             if army['rei']['ativo']:
@@ -149,7 +157,7 @@ def ataque_goblin(army):
             clicar(army['pocao_1']['sel'])
             clicar_coordenadas((380, 310))
             clicar_coordenadas((500, 310))
-            clicar('selecionar_tropa_1')
+            clicar('selecionar_tropa_' + army['troops']['quantidade'])
 
 
 

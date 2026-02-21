@@ -40,8 +40,11 @@ def procurar_partida():
     clicar('atacar')
     wait_and_check(DELAY_PADRAO + random.uniform(0.1, 0.2))
     
+    clicar('encontrar')
+    wait_and_check(DELAY_PADRAO + 2 + random.uniform(0.1, 0.2))
+
     clicar('attack_army')
-    wait_and_check(DELAY_PADRAO + 5 + random.uniform(0.1, 0.2))
+    wait_and_check(DELAY_PADRAO + 2 + random.uniform(0.1, 0.2))
 
 def render():
     """Aciona a rendição e retorna ao menu principal."""
@@ -74,12 +77,6 @@ def ataque():
 
 def ajustar_hotbar(army):
     """Ajusta a hotbar de acordo com os heróis selecionados."""
-
-    for tropa in range (army['troops']['quantidade']):
-        key = f"tropa_{tropa+1}"
-        if key not in army:
-            army[key] = {}
-        army[key]['sel'] = f"selecionar_tropa_{tropa+1}"
 
     if army['siege_machine']['ativo']:
         army['siege_machine']['sel'] = f"selecionar_tropa_{army['troops']['quantidade'] + 1}"
