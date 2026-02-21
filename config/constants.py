@@ -28,7 +28,7 @@ def var():
 
 BOTOES = {
     'atacar': (45 + var(), 473 + var()),
-    'encontrar': (150 + var(), 400 + var()),
+    'encontrar': (120 + var(), 380 + var()),
     'selecionar_tropa_1': (152 + var(), 480 + var()),
     'selecionar_tropa_2': (212 + var(), 480 + var()),
     'selecionar_tropa_3': (272 + var(), 480 + var()),
