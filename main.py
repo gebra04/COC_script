@@ -32,6 +32,12 @@ if __name__ == "__main__":
             army['troops']['quantidade'] = int(input("Quantas tropas você vai usar no ataque?\n"))
             army['pocao']['quantidade'] = int(input("Quantas poções você vai usar no ataque?\n"))
             army['siege_machine']['ativo'] = int(input("Deseja usar máquina de cerco?\n 0 - Não\n 1 - Sim\n"))
+            for tropa in range (army['troops']['quantidade']):
+                key = f"tropa_{tropa+1}"
+                if key not in army:
+                    army[key] = {}
+                army[key]['sel'] = f"selecionar_tropa_{tropa+1}"
+                army[key]['unidades_tropa_' + key] = int(input(f"Quantas unidades da {tropa+1}ª tropa?\n"))
 
         army = ajustar_hotbar(army)
 
