@@ -1,98 +1,105 @@
 # main.py
 
 import time
-from attacks.attack_utils import coletar_carrinho, ajustar_hotbar, abastecer_castelo
-from attacks.builder_base import perder, ganhar_uma, ganhar_duas
-from attacks.home_base import ataque_goblin, ataque_dragao
+import json
+import os
 
-if __name__ == "__main__":
-    modo = int(input("Qual modo deseja executar?\n 1 - Perder\n 2 - Ganhar\n 3 - Híbrido\n 4 - Ataque Dragão\n 5 - Ataque Goblin\n"))
-    iter = int(input("Quantas vezes você deseja executar o script?"))
-    army = {
-        'troops': {'quantidade': 1, 'sel': 0},
-        'rei': {'ativo': 0, 'sel': 0},
-        'rainha': {'ativo': 0, 'sel': 0},
-        'guardiao': {'ativo': 0, 'sel': 0},
-        'campea': {'ativo': 0, 'sel': 0},
-        'pocao': {'quantidade': 1, 'sel': 0},
-        'siege_machine': {'ativo': 1, 'sel': 0}
-    }
-    herois = 0
-    if modo >=  4:
-        herois = int(input("Deseja usar heróis no ataque?\n 0 - Não\n 1 - Sim\n"))
-        personalizar = int(input("Deseja personalizar o ataque?\n 0 - Não\n 1 - Sim\n"))
 
-        if herois:
-            army['rei']['ativo'] = int(input("Rei Bárbaro ativo?\n 0 - Não\n 1 - Sim\n"))
-            army['rainha']['ativo'] = int(input("Rainha Arqueira ativa?\n 0 - Não\n 1 - Sim\n"))
-            army['guardiao']['ativo'] = int(input("Guardião ativo?\n 0 - Não\n 1 - Sim\n"))
-            army['campea']['ativo'] = int(input("Campeã ativa?\n 0 - Não\n 1 - Sim\n"))
-    
-        if personalizar:
-            army['troops']['quantidade'] = int(input("Quantas tropas você vai usar no ataque?\n"))
-            army['pocao']['quantidade'] = int(input("Quantas poções você vai usar no ataque?\n"))
-            army['siege_machine']['ativo'] = int(input("Deseja usar máquina de cerco?\n 0 - Não\n 1 - Sim\n"))
-            for tropa in range (army['troops']['quantidade']):
-                key = f"tropa_{tropa+1}"
-                if key not in army:
-                    army[key] = {}
-                army[key]['sel'] = f"selecionar_tropa_{tropa+1}"
-                army[key]['unidades_tropa_' + key] = int(input(f"Quantas unidades da {tropa+1}ª tropa?\n"))
+def carregar_presets():
+    """Carrega os presets do arquivo JSON."""
+    if os.path.exists('presets.json'):
+        with open('presets.json', 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
 
+
+def salvar_presets(presets):
+    """Salva os presets no arquivo JSON."""
+    with open('presets.json', 'w', encoding='utf-8') as f:
+        json.dump(presets, f, indent=2, ensure_ascii=False)
+
+
+def iniciar_bot(config):
+    """
+    Função principal que executa o bot baseado na configuração fornecida.
+
+    Args:
+        config (dict): Dicionário com a configuração do ataque.
+            Deve conter: modo, iteracoes, espera_carrinho, castelo, army
+
+    Nota: Os imports são feitos aqui (lazy loading) para evitar dependências
+    de X11 quando a GUI é carregada sem display gráfico.
+    """
+    # Importações lazy - apenas quando o bot vai ser executado
+    from attacks.attack_utils import coletar_carrinho, ajustar_hotbar, abastecer_castelo
+    from attacks.builder_base import perder, ganhar_uma, ganhar_duas
+    from attacks.home_base import ataque_goblin, ataque_dragao
+
+    modo = config.get('modo', 1)
+    iter = config.get('iteracoes', 1)
+    army = config.get('army', {})
+    espera_carrinho = config.get('espera_carrinho', 5)
+    castelo = config.get('castelo', 0)
+    num_vilas = config.get('num_vilas', 2)
+
+    # Ajustar hotbar se aplicável
+    if modo >= 4 and army:
         army = ajustar_hotbar(army)
 
-    num_vilas = 2
-    espera_carrinho = 5
-    if modo <= 3:
-        espera_carrinho = int(input("Quantas batalhas antes de coletar o carrinho?\n"))
-        
-        if modo != 1:
-            num_vilas = int(input("Quantas vilas na casa do construtor?\n 1 - Uma vila\n 2 - Duas vilas\n"))
-    else:
-        castelo = int(input("Deseja abastecer o castelo?\n 0 - Não\n 1 - Sim\n"))
-        
-
     for i in range(0, iter):
-        if modo == 1:
-            perder()
-            time.sleep(2)
+        try:
+            if modo == 1:
+                perder()
+                time.sleep(2)
 
-        elif modo == 2:
-            if num_vilas == 1:
-                ganhar_uma()
+            elif modo == 2:
+                if num_vilas == 1:
+                    ganhar_uma()
+                else:
+                    ganhar_duas()
+                time.sleep(2)
+
+            elif modo == 3:
+                if num_vilas == 1:
+                    ganhar_uma()
+                else:
+                    ganhar_duas()
+                time.sleep(2)
+                perder()
+                time.sleep(2)
+
+            elif modo == 4:
+                if castelo:
+                    abastecer_castelo()
+                ataque_dragao(army)
+                time.sleep(8)
+
+            elif modo == 5:
+                if castelo:
+                    abastecer_castelo()
+                ataque_goblin(army)
+                time.sleep(8)
+
             else:
-                ganhar_duas()
-            time.sleep(2)
+                print("Erro: modo inválido")
 
-        elif modo == 3:
-            if num_vilas == 1:
-                ganhar_uma()
-            else:
-                ganhar_duas()
-            time.sleep(2)
-            perder()
-            time.sleep(2)
+            if i % espera_carrinho == 0 and modo <= 3 and (i != 0):
+                coletar_carrinho()
 
-        elif modo == 4:
-            if castelo:
-                abastecer_castelo()
-            ataque_dragao(army)
-            time.sleep(8)
-        
-        elif modo == 5:
-            if castelo:
-                abastecer_castelo()
-            ataque_goblin(army)
-            time.sleep(8)
+            time.sleep(3)
+            print(f"{i + 1}ª iteração concluída.")
 
-        else:
-            print("Erro, digite uma das opções")
-
-        
-        if i % espera_carrinho == 0 and modo <= 3 and (i != 0):
-            coletar_carrinho()
+        except Exception as e:
+            print(f"Erro na iteração {i + 1}: {e}")
+            break
 
 
-
-        time.sleep(3)
-        print(f"{i + 1}a iteração concluída.")
+if __name__ == "__main__":
+    # Para testes diretos via terminal (deixado para compatibilidade)
+    presets = carregar_presets()
+    if presets:
+        primeiro_preset = list(presets.keys())[0]
+        config = presets[primeiro_preset]
+        iniciar_bot(config)
+    else:
+        print("Nenhum preset disponível.")
