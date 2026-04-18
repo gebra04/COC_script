@@ -1,0 +1,11 @@
+[project]
+name = "coc-script"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "customtkinter>=5.2.2",
+    "pillow>=12.2.0",
+    "pyautogui>=0.9.54",
+]
