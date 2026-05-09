@@ -1,5 +1,9 @@
 # utils/mouse_actions.py
 
+from utils.xlib_mutter_xauth import apply_patch as _apply_xlib_mutter_xauth_patch
+
+_apply_xlib_mutter_xauth_patch()
+
 import pyautogui
 import time
 import random
