@@ -186,7 +186,8 @@ Exército:
             2: "Ganhar (1 vila)",
             3: "Híbrido",
             4: "Ataque Dragão",
-            5: "Ataque Goblin"
+            5: "Ataque Goblin",
+            6: "Ataque Rápido"
         }
         return modos.get(modo, "Desconhecido")
     
@@ -327,12 +328,12 @@ Exército:
         
         self.combo_modo = ctk.CTkComboBox(
             frame_config,
-            values=["1 - Perder", "2 - Ganhar", "3 - Híbrido", "4 - Dragão", "5 - Goblin"],
+            values=["1 - Perder", "2 - Ganhar", "3 - Híbrido", "4 - Dragão", "5 - Goblin", "6 - Rápido"],
             state="readonly",
             font=("Arial", 11)
         )
         self.combo_modo.grid(row=0, column=1, sticky="ew", padx=5, pady=5)
-        self.combo_modo.set("5 - Goblin")
+        self.combo_modo.set("6 - Rápido")
         
         label_iter = ctk.CTkLabel(frame_config, text="Iterações:", font=("Arial", 11, "bold"))
         label_iter.grid(row=0, column=2, sticky="w", padx=5, pady=5)
@@ -359,6 +360,18 @@ Exército:
         self.entry_pocoes = ctk.CTkEntry(frame_tropas, placeholder_text="5", width=80, font=("Arial", 11))
         self.entry_pocoes.grid(row=0, column=3, sticky="w", padx=5, pady=5)
         self.entry_pocoes.insert(0, "5")
+
+        # Frame para configurações de tempo (Ataque Rápido)
+        frame_tempo = ctk.CTkFrame(scroll_frame)
+        frame_tempo.pack(fill="x", padx=15, pady=5)
+        frame_tempo.grid_columnconfigure(1, weight=1)
+
+        label_tempo = ctk.CTkLabel(frame_tempo, text="Tempo Ataque Rápido (s):", font=("Arial", 11, "bold"))
+        label_tempo.grid(row=0, column=0, sticky="w", padx=5, pady=5)
+
+        self.entry_tempo_ataque = ctk.CTkEntry(frame_tempo, placeholder_text="35", width=80, font=("Arial", 11))
+        self.entry_tempo_ataque.grid(row=0, column=1, sticky="w", padx=5, pady=5)
+        self.entry_tempo_ataque.insert(0, "35")
         
         # Frame para heróis
         frame_herois = ctk.CTkFrame(scroll_frame)
@@ -456,6 +469,9 @@ Exército:
         
         self.entry_pocoes.delete(0, "end")
         self.entry_pocoes.insert(0, str(army.get('pocao', {}).get('quantidade', 5)))
+
+        self.entry_tempo_ataque.delete(0, "end")
+        self.entry_tempo_ataque.insert(0, str(config.get('tempo_ataque', 35)))
         
         # Checkboxes de heróis
         if army.get('rei', {}).get('ativo'):
@@ -504,6 +520,7 @@ Exército:
             iteracoes = int(self.entry_iter.get())
             tropas_qtd = int(self.entry_tropas.get())
             pocoes_qtd = int(self.entry_pocoes.get())
+            tempo_ataque = float(self.entry_tempo_ataque.get())
         except ValueError:
             self.label_status_valor.configure(text="Erro: Valores numéricos inválidos", text_color="red")
             return
@@ -514,6 +531,7 @@ Exército:
             "iteracoes": iteracoes,
             "espera_carrinho": 5,
             "castelo": 1 if self.check_castelo.get() else 0,
+            "tempo_ataque": tempo_ataque,
             "army": {
                 "troops": {"quantidade": tropas_qtd, "sel": 0},
                 "rei": {"ativo": 1 if self.check_rei.get() else 0, "sel": 0},
@@ -585,6 +603,8 @@ Exército:
         self.entry_tropas.insert(0, "50")
         self.entry_pocoes.delete(0, "end")
         self.entry_pocoes.insert(0, "5")
+        self.entry_tempo_ataque.delete(0, "end")
+        self.entry_tempo_ataque.insert(0, "35")
         self.check_rei.select()
         self.check_rainha.deselect()
         self.check_guardiao.deselect()

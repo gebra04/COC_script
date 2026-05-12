@@ -33,7 +33,7 @@ def iniciar_bot(config):
     # Importações lazy - apenas quando o bot vai ser executado
     from attacks.attack_utils import coletar_carrinho, ajustar_hotbar, abastecer_castelo
     from attacks.builder_base import perder, ganhar_uma, ganhar_duas
-    from attacks.home_base import ataque_goblin, ataque_dragao
+    from attacks.home_base import ataque_goblin, ataque_dragao, ataque_rapido
 
     modo = config.get('modo', 1)
     iter = config.get('iteracoes', 1)
@@ -79,6 +79,12 @@ def iniciar_bot(config):
                     abastecer_castelo()
                 ataque_goblin(army)
                 time.sleep(8)
+
+            elif modo == 6:
+                if castelo:
+                    abastecer_castelo()
+                tempo_ataque = config.get('tempo_ataque', 35)
+                ataque_rapido(army, tempo_ataque=tempo_ataque)
 
             else:
                 print("Erro: modo inválido")

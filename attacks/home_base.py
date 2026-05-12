@@ -172,4 +172,58 @@ def ataque_goblin(army):
 
     wait_and_check(15)
     render()
+
+def ataque_rapido(army, tempo_ataque=35):
+    procurar_partida()
+    wait_and_check(2)
+
+    # Ajuste de tela
+    arrastar(BOTOES['arrastar_cima'], BOTOES['arrastar_baixo'])
     
+    herois = ['rei', 'rainha', 'guardiao', 'campea']
+    cantos_herois = ['C', 'B', 'EC', 'DC']
+    herois_ativos = [h for h in herois if army.get(h, {}).get('ativo')]
+
+    start_time = time.time()
+    primeira_tropa_posicionada = False
+
+    # Posicionar heróis e ativar habilidade
+    for i, heroi in enumerate(herois_ativos):
+        canto = cantos_herois[i % 4]
+        clicar(army[heroi]['sel'])
+        x, y = CANTOS[canto]
+        pyautogui.click(x, y)
+        if not primeira_tropa_posicionada:
+            start_time = time.time()
+            primeira_tropa_posicionada = True
+        time.sleep(0.1) # Breve pausa para o herói aparecer
+        hx, hy = BOTOES[army[heroi]['sel']]
+        pyautogui.click(hx, hy) # Ativa habilidade imediatamente
+
+    # Selecionar a tropa
+    clicar('selecionar_tropa_1')
+
+    tropas_totais = army.get('troops', {}).get('quantidade', 40)
+    tropas_por_reta = tropas_totais // 4
+
+    for reta in RETAS:
+        xi, yi = RETAS[reta][0]
+        xf, yf = RETAS[reta][1]
+        
+        for i in range(tropas_por_reta):
+            fator = i / max(1, (tropas_por_reta - 1))
+            x = int(round(xi + (xf - xi) * fator))
+            y = int(round(yi + (yf - yi) * fator))
+            pyautogui.click(x, y)
+            if not primeira_tropa_posicionada:
+                start_time = time.time()
+                primeira_tropa_posicionada = True
+
+    # Esperar o tempo de ataque definido
+    elapsed_time = time.time() - start_time
+    wait_time = tempo_ataque - elapsed_time
+    
+    if wait_time > 0:
+        wait_and_check(wait_time)
+        
+    render()
