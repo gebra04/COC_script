@@ -1,0 +1,3437 @@
+{
+  "1000000": {
+    "data_id": 1000000,
+    "name": "Troop Housing",
+    "building_class": "Army",
+    "village": "home",
+    "width": 4,
+    "height": 4,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 250
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 270
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 290
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 310
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 330
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 350
+      },
+      {
+        "level": 7,
+        "th_required": 9,
+        "hitpoints": 400
+      },
+      {
+        "level": 8,
+        "th_required": 10,
+        "hitpoints": 500
+      },
+      {
+        "level": 9,
+        "th_required": 11,
+        "hitpoints": 600
+      },
+      {
+        "level": 10,
+        "th_required": 12,
+        "hitpoints": 700
+      },
+      {
+        "level": 11,
+        "th_required": 13,
+        "hitpoints": 800
+      }
+    ]
+  },
+  "1000001": {
+    "data_id": 1000001,
+    "name": "Town Hall",
+    "building_class": "Town Hall",
+    "village": "home",
+    "width": 4,
+    "height": 4,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 0,
+        "hitpoints": 450
+      },
+      {
+        "level": 2,
+        "th_required": 1,
+        "hitpoints": 1600
+      },
+      {
+        "level": 3,
+        "th_required": 2,
+        "hitpoints": 1850
+      },
+      {
+        "level": 4,
+        "th_required": 3,
+        "hitpoints": 2100
+      },
+      {
+        "level": 5,
+        "th_required": 4,
+        "hitpoints": 2400
+      },
+      {
+        "level": 6,
+        "th_required": 5,
+        "hitpoints": 2800
+      },
+      {
+        "level": 7,
+        "th_required": 6,
+        "hitpoints": 3300
+      },
+      {
+        "level": 8,
+        "th_required": 7,
+        "hitpoints": 3900
+      },
+      {
+        "level": 9,
+        "th_required": 8,
+        "hitpoints": 4600
+      },
+      {
+        "level": 10,
+        "th_required": 9,
+        "hitpoints": 5500
+      },
+      {
+        "level": 11,
+        "th_required": 10,
+        "hitpoints": 6800
+      },
+      {
+        "level": 12,
+        "th_required": 11,
+        "hitpoints": 7500
+      },
+      {
+        "level": 13,
+        "th_required": 12,
+        "hitpoints": 8200
+      },
+      {
+        "level": 14,
+        "th_required": 13,
+        "hitpoints": 8900
+      }
+    ]
+  },
+  "1000002": {
+    "data_id": 1000002,
+    "name": "Elixir Pump",
+    "building_class": "Resource",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 400
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 440
+      },
+      {
+        "level": 3,
+        "th_required": 2,
+        "hitpoints": 480
+      },
+      {
+        "level": 4,
+        "th_required": 2,
+        "hitpoints": 520
+      },
+      {
+        "level": 5,
+        "th_required": 3,
+        "hitpoints": 560
+      },
+      {
+        "level": 6,
+        "th_required": 3,
+        "hitpoints": 600
+      },
+      {
+        "level": 7,
+        "th_required": 4,
+        "hitpoints": 640
+      },
+      {
+        "level": 8,
+        "th_required": 4,
+        "hitpoints": 680
+      },
+      {
+        "level": 9,
+        "th_required": 5,
+        "hitpoints": 720
+      },
+      {
+        "level": 10,
+        "th_required": 5,
+        "hitpoints": 780
+      },
+      {
+        "level": 11,
+        "th_required": 7,
+        "hitpoints": 860
+      },
+      {
+        "level": 12,
+        "th_required": 8,
+        "hitpoints": 960
+      },
+      {
+        "level": 13,
+        "th_required": 10,
+        "hitpoints": 1080
+      },
+      {
+        "level": 14,
+        "th_required": 11,
+        "hitpoints": 1180
+      }
+    ]
+  },
+  "1000003": {
+    "data_id": 1000003,
+    "name": "Elixir Storage",
+    "building_class": "Resource",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 400
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 600
+      },
+      {
+        "level": 3,
+        "th_required": 2,
+        "hitpoints": 800
+      },
+      {
+        "level": 4,
+        "th_required": 3,
+        "hitpoints": 1000
+      },
+      {
+        "level": 5,
+        "th_required": 3,
+        "hitpoints": 1200
+      },
+      {
+        "level": 6,
+        "th_required": 3,
+        "hitpoints": 1400
+      },
+      {
+        "level": 7,
+        "th_required": 4,
+        "hitpoints": 1600
+      },
+      {
+        "level": 8,
+        "th_required": 4,
+        "hitpoints": 1700
+      },
+      {
+        "level": 9,
+        "th_required": 5,
+        "hitpoints": 1800
+      },
+      {
+        "level": 10,
+        "th_required": 6,
+        "hitpoints": 1900
+      },
+      {
+        "level": 11,
+        "th_required": 7,
+        "hitpoints": 2100
+      },
+      {
+        "level": 12,
+        "th_required": 11,
+        "hitpoints": 2500
+      },
+      {
+        "level": 13,
+        "th_required": 12,
+        "hitpoints": 2900
+      },
+      {
+        "level": 14,
+        "th_required": 13,
+        "hitpoints": 3300
+      },
+      {
+        "level": 15,
+        "th_required": 14,
+        "hitpoints": 3700
+      }
+    ]
+  },
+  "1000004": {
+    "data_id": 1000004,
+    "name": "Gold Mine",
+    "building_class": "Resource",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 400
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 440
+      },
+      {
+        "level": 3,
+        "th_required": 2,
+        "hitpoints": 480
+      },
+      {
+        "level": 4,
+        "th_required": 2,
+        "hitpoints": 520
+      },
+      {
+        "level": 5,
+        "th_required": 3,
+        "hitpoints": 560
+      },
+      {
+        "level": 6,
+        "th_required": 3,
+        "hitpoints": 600
+      },
+      {
+        "level": 7,
+        "th_required": 4,
+        "hitpoints": 640
+      },
+      {
+        "level": 8,
+        "th_required": 4,
+        "hitpoints": 680
+      },
+      {
+        "level": 9,
+        "th_required": 5,
+        "hitpoints": 720
+      },
+      {
+        "level": 10,
+        "th_required": 5,
+        "hitpoints": 780
+      },
+      {
+        "level": 11,
+        "th_required": 7,
+        "hitpoints": 860
+      },
+      {
+        "level": 12,
+        "th_required": 8,
+        "hitpoints": 960
+      },
+      {
+        "level": 13,
+        "th_required": 10,
+        "hitpoints": 1080
+      },
+      {
+        "level": 14,
+        "th_required": 11,
+        "hitpoints": 1180
+      }
+    ]
+  },
+  "1000005": {
+    "data_id": 1000005,
+    "name": "Gold Storage",
+    "building_class": "Resource",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 400
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 600
+      },
+      {
+        "level": 3,
+        "th_required": 2,
+        "hitpoints": 800
+      },
+      {
+        "level": 4,
+        "th_required": 3,
+        "hitpoints": 1000
+      },
+      {
+        "level": 5,
+        "th_required": 3,
+        "hitpoints": 1200
+      },
+      {
+        "level": 6,
+        "th_required": 3,
+        "hitpoints": 1400
+      },
+      {
+        "level": 7,
+        "th_required": 4,
+        "hitpoints": 1600
+      },
+      {
+        "level": 8,
+        "th_required": 4,
+        "hitpoints": 1700
+      },
+      {
+        "level": 9,
+        "th_required": 5,
+        "hitpoints": 1800
+      },
+      {
+        "level": 10,
+        "th_required": 6,
+        "hitpoints": 1900
+      },
+      {
+        "level": 11,
+        "th_required": 7,
+        "hitpoints": 2100
+      },
+      {
+        "level": 12,
+        "th_required": 11,
+        "hitpoints": 2500
+      },
+      {
+        "level": 13,
+        "th_required": 12,
+        "hitpoints": 2900
+      },
+      {
+        "level": 14,
+        "th_required": 13,
+        "hitpoints": 3300
+      },
+      {
+        "level": 15,
+        "th_required": 14,
+        "hitpoints": 3700
+      }
+    ]
+  },
+  "1000006": {
+    "data_id": 1000006,
+    "name": "Barrack",
+    "building_class": "Army",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 250
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 290
+      },
+      {
+        "level": 3,
+        "th_required": 2,
+        "hitpoints": 330
+      },
+      {
+        "level": 4,
+        "th_required": 2,
+        "hitpoints": 370
+      },
+      {
+        "level": 5,
+        "th_required": 3,
+        "hitpoints": 420
+      },
+      {
+        "level": 6,
+        "th_required": 4,
+        "hitpoints": 470
+      },
+      {
+        "level": 7,
+        "th_required": 5,
+        "hitpoints": 520
+      },
+      {
+        "level": 8,
+        "th_required": 6,
+        "hitpoints": 580
+      },
+      {
+        "level": 9,
+        "th_required": 7,
+        "hitpoints": 650
+      },
+      {
+        "level": 10,
+        "th_required": 8,
+        "hitpoints": 730
+      },
+      {
+        "level": 11,
+        "th_required": 9,
+        "hitpoints": 810
+      },
+      {
+        "level": 12,
+        "th_required": 10,
+        "hitpoints": 900
+      },
+      {
+        "level": 13,
+        "th_required": 11,
+        "hitpoints": 980
+      },
+      {
+        "level": 14,
+        "th_required": 12,
+        "hitpoints": 1050
+      },
+      {
+        "level": 15,
+        "th_required": 13,
+        "hitpoints": 1150
+      }
+    ]
+  },
+  "1000007": {
+    "data_id": 1000007,
+    "name": "Laboratory",
+    "building_class": "Army",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 3,
+        "hitpoints": 500
+      },
+      {
+        "level": 2,
+        "th_required": 4,
+        "hitpoints": 550
+      },
+      {
+        "level": 3,
+        "th_required": 5,
+        "hitpoints": 600
+      },
+      {
+        "level": 4,
+        "th_required": 6,
+        "hitpoints": 650
+      },
+      {
+        "level": 5,
+        "th_required": 7,
+        "hitpoints": 700
+      },
+      {
+        "level": 6,
+        "th_required": 8,
+        "hitpoints": 750
+      },
+      {
+        "level": 7,
+        "th_required": 9,
+        "hitpoints": 830
+      },
+      {
+        "level": 8,
+        "th_required": 10,
+        "hitpoints": 950
+      },
+      {
+        "level": 9,
+        "th_required": 11,
+        "hitpoints": 1070
+      },
+      {
+        "level": 10,
+        "th_required": 12,
+        "hitpoints": 1140
+      },
+      {
+        "level": 11,
+        "th_required": 13,
+        "hitpoints": 1210
+      },
+      {
+        "level": 12,
+        "th_required": 14,
+        "hitpoints": 1280
+      }
+    ]
+  },
+  "1000008": {
+    "data_id": 1000008,
+    "name": "Cannon",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 420
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 470
+      },
+      {
+        "level": 3,
+        "th_required": 2,
+        "hitpoints": 520
+      },
+      {
+        "level": 4,
+        "th_required": 3,
+        "hitpoints": 570
+      },
+      {
+        "level": 5,
+        "th_required": 4,
+        "hitpoints": 620
+      },
+      {
+        "level": 6,
+        "th_required": 5,
+        "hitpoints": 670
+      },
+      {
+        "level": 7,
+        "th_required": 6,
+        "hitpoints": 730
+      },
+      {
+        "level": 8,
+        "th_required": 7,
+        "hitpoints": 800
+      },
+      {
+        "level": 9,
+        "th_required": 8,
+        "hitpoints": 880
+      },
+      {
+        "level": 10,
+        "th_required": 8,
+        "hitpoints": 960
+      },
+      {
+        "level": 11,
+        "th_required": 9,
+        "hitpoints": 1060
+      },
+      {
+        "level": 12,
+        "th_required": 10,
+        "hitpoints": 1160
+      },
+      {
+        "level": 13,
+        "th_required": 10,
+        "hitpoints": 1260
+      },
+      {
+        "level": 14,
+        "th_required": 11,
+        "hitpoints": 1380
+      },
+      {
+        "level": 15,
+        "th_required": 11,
+        "hitpoints": 1500
+      },
+      {
+        "level": 16,
+        "th_required": 12,
+        "hitpoints": 1620
+      },
+      {
+        "level": 17,
+        "th_required": 12,
+        "hitpoints": 1740
+      },
+      {
+        "level": 18,
+        "th_required": 13,
+        "hitpoints": 1870
+      },
+      {
+        "level": 19,
+        "th_required": 13,
+        "hitpoints": 2000
+      },
+      {
+        "level": 20,
+        "th_required": 14,
+        "hitpoints": 2150
+      }
+    ]
+  },
+  "1000009": {
+    "data_id": 1000009,
+    "name": "Archer Tower",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 2,
+        "hitpoints": 380
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 420
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 460
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 500
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 540
+      },
+      {
+        "level": 6,
+        "th_required": 5,
+        "hitpoints": 580
+      },
+      {
+        "level": 7,
+        "th_required": 6,
+        "hitpoints": 630
+      },
+      {
+        "level": 8,
+        "th_required": 7,
+        "hitpoints": 690
+      },
+      {
+        "level": 9,
+        "th_required": 8,
+        "hitpoints": 750
+      },
+      {
+        "level": 10,
+        "th_required": 8,
+        "hitpoints": 810
+      },
+      {
+        "level": 11,
+        "th_required": 9,
+        "hitpoints": 890
+      },
+      {
+        "level": 12,
+        "th_required": 10,
+        "hitpoints": 970
+      },
+      {
+        "level": 13,
+        "th_required": 10,
+        "hitpoints": 1050
+      },
+      {
+        "level": 14,
+        "th_required": 11,
+        "hitpoints": 1130
+      },
+      {
+        "level": 15,
+        "th_required": 11,
+        "hitpoints": 1230
+      },
+      {
+        "level": 16,
+        "th_required": 12,
+        "hitpoints": 1330
+      },
+      {
+        "level": 17,
+        "th_required": 12,
+        "hitpoints": 1410
+      },
+      {
+        "level": 18,
+        "th_required": 13,
+        "hitpoints": 1510
+      },
+      {
+        "level": 19,
+        "th_required": 13,
+        "hitpoints": 1600
+      },
+      {
+        "level": 20,
+        "th_required": 14,
+        "hitpoints": 1700
+      }
+    ]
+  },
+  "1000010": {
+    "data_id": 1000010,
+    "name": "Wall",
+    "building_class": "Wall",
+    "village": "home",
+    "width": 1,
+    "height": 1,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 2,
+        "hitpoints": 300
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 500
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 700
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 900
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 1400
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 2000
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 2500
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 3000
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 4000
+      },
+      {
+        "level": 10,
+        "th_required": 9,
+        "hitpoints": 5500
+      },
+      {
+        "level": 11,
+        "th_required": 10,
+        "hitpoints": 7000
+      },
+      {
+        "level": 12,
+        "th_required": 11,
+        "hitpoints": 8500
+      },
+      {
+        "level": 13,
+        "th_required": 12,
+        "hitpoints": 10000
+      },
+      {
+        "level": 14,
+        "th_required": 13,
+        "hitpoints": 11500
+      },
+      {
+        "level": 15,
+        "th_required": 14,
+        "hitpoints": 12500
+      }
+    ]
+  },
+  "1000011": {
+    "data_id": 1000011,
+    "name": "Wizard Tower",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 5,
+        "hitpoints": 620
+      },
+      {
+        "level": 2,
+        "th_required": 5,
+        "hitpoints": 650
+      },
+      {
+        "level": 3,
+        "th_required": 6,
+        "hitpoints": 680
+      },
+      {
+        "level": 4,
+        "th_required": 7,
+        "hitpoints": 730
+      },
+      {
+        "level": 5,
+        "th_required": 8,
+        "hitpoints": 840
+      },
+      {
+        "level": 6,
+        "th_required": 8,
+        "hitpoints": 960
+      },
+      {
+        "level": 7,
+        "th_required": 9,
+        "hitpoints": 1200
+      },
+      {
+        "level": 8,
+        "th_required": 10,
+        "hitpoints": 1440
+      },
+      {
+        "level": 9,
+        "th_required": 10,
+        "hitpoints": 1680
+      },
+      {
+        "level": 10,
+        "th_required": 11,
+        "hitpoints": 2000
+      },
+      {
+        "level": 11,
+        "th_required": 12,
+        "hitpoints": 2240
+      },
+      {
+        "level": 12,
+        "th_required": 13,
+        "hitpoints": 2480
+      },
+      {
+        "level": 13,
+        "th_required": 13,
+        "hitpoints": 2700
+      },
+      {
+        "level": 14,
+        "th_required": 14,
+        "hitpoints": 2900
+      }
+    ]
+  },
+  "1000012": {
+    "data_id": 1000012,
+    "name": "Air Defense",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 4,
+        "hitpoints": 800
+      },
+      {
+        "level": 2,
+        "th_required": 4,
+        "hitpoints": 850
+      },
+      {
+        "level": 3,
+        "th_required": 5,
+        "hitpoints": 900
+      },
+      {
+        "level": 4,
+        "th_required": 6,
+        "hitpoints": 950
+      },
+      {
+        "level": 5,
+        "th_required": 7,
+        "hitpoints": 1000
+      },
+      {
+        "level": 6,
+        "th_required": 8,
+        "hitpoints": 1050
+      },
+      {
+        "level": 7,
+        "th_required": 9,
+        "hitpoints": 1100
+      },
+      {
+        "level": 8,
+        "th_required": 10,
+        "hitpoints": 1210
+      },
+      {
+        "level": 9,
+        "th_required": 11,
+        "hitpoints": 1300
+      },
+      {
+        "level": 10,
+        "th_required": 12,
+        "hitpoints": 1400
+      },
+      {
+        "level": 11,
+        "th_required": 13,
+        "hitpoints": 1500
+      },
+      {
+        "level": 12,
+        "th_required": 14,
+        "hitpoints": 1600
+      }
+    ]
+  },
+  "1000013": {
+    "data_id": 1000013,
+    "name": "Mortar",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 3,
+        "hitpoints": 400
+      },
+      {
+        "level": 2,
+        "th_required": 4,
+        "hitpoints": 450
+      },
+      {
+        "level": 3,
+        "th_required": 5,
+        "hitpoints": 500
+      },
+      {
+        "level": 4,
+        "th_required": 6,
+        "hitpoints": 550
+      },
+      {
+        "level": 5,
+        "th_required": 7,
+        "hitpoints": 600
+      },
+      {
+        "level": 6,
+        "th_required": 8,
+        "hitpoints": 650
+      },
+      {
+        "level": 7,
+        "th_required": 9,
+        "hitpoints": 700
+      },
+      {
+        "level": 8,
+        "th_required": 10,
+        "hitpoints": 750
+      },
+      {
+        "level": 9,
+        "th_required": 11,
+        "hitpoints": 800
+      },
+      {
+        "level": 10,
+        "th_required": 11,
+        "hitpoints": 850
+      },
+      {
+        "level": 11,
+        "th_required": 12,
+        "hitpoints": 900
+      },
+      {
+        "level": 12,
+        "th_required": 12,
+        "hitpoints": 980
+      },
+      {
+        "level": 13,
+        "th_required": 13,
+        "hitpoints": 1100
+      },
+      {
+        "level": 14,
+        "th_required": 14,
+        "hitpoints": 1250
+      }
+    ]
+  },
+  "1000014": {
+    "data_id": 1000014,
+    "name": "Alliance Castle",
+    "building_class": "Army",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 3,
+        "hitpoints": 1000
+      },
+      {
+        "level": 2,
+        "th_required": 4,
+        "hitpoints": 1400
+      },
+      {
+        "level": 3,
+        "th_required": 6,
+        "hitpoints": 2000
+      },
+      {
+        "level": 4,
+        "th_required": 8,
+        "hitpoints": 2600
+      },
+      {
+        "level": 5,
+        "th_required": 9,
+        "hitpoints": 3000
+      },
+      {
+        "level": 6,
+        "th_required": 10,
+        "hitpoints": 3400
+      },
+      {
+        "level": 7,
+        "th_required": 11,
+        "hitpoints": 4000
+      },
+      {
+        "level": 8,
+        "th_required": 12,
+        "hitpoints": 4400
+      },
+      {
+        "level": 9,
+        "th_required": 13,
+        "hitpoints": 4800
+      },
+      {
+        "level": 10,
+        "th_required": 14,
+        "hitpoints": 5200
+      }
+    ]
+  },
+  "1000015": {
+    "data_id": 1000015,
+    "name": "Worker Building",
+    "building_class": "Worker",
+    "village": "home",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 250
+      },
+      {
+        "level": 2,
+        "th_required": 14,
+        "hitpoints": 1000
+      },
+      {
+        "level": 3,
+        "th_required": 14,
+        "hitpoints": 1300
+      },
+      {
+        "level": 4,
+        "th_required": 14,
+        "hitpoints": 1600
+      }
+    ]
+  },
+  "1000016": {
+    "data_id": 1000016,
+    "name": "Communications mast",
+    "building_class": "Npc",
+    "village": "home",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 250
+      }
+    ]
+  },
+  "1000017": {
+    "data_id": 1000017,
+    "name": "Goblin main building",
+    "building_class": "Npc Town Hall",
+    "village": "home",
+    "width": 4,
+    "height": 4,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": null,
+        "hitpoints": 750
+      },
+      {
+        "level": 2,
+        "th_required": null,
+        "hitpoints": 7500
+      }
+    ]
+  },
+  "1000018": {
+    "data_id": 1000018,
+    "name": "Goblin hut",
+    "building_class": "Npc",
+    "village": "home",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 250
+      }
+    ]
+  },
+  "1000019": {
+    "data_id": 1000019,
+    "name": "Tesla Tower",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 7,
+        "hitpoints": 600
+      },
+      {
+        "level": 2,
+        "th_required": 7,
+        "hitpoints": 630
+      },
+      {
+        "level": 3,
+        "th_required": 7,
+        "hitpoints": 660
+      },
+      {
+        "level": 4,
+        "th_required": 8,
+        "hitpoints": 690
+      },
+      {
+        "level": 5,
+        "th_required": 8,
+        "hitpoints": 730
+      },
+      {
+        "level": 6,
+        "th_required": 8,
+        "hitpoints": 770
+      },
+      {
+        "level": 7,
+        "th_required": 9,
+        "hitpoints": 810
+      },
+      {
+        "level": 8,
+        "th_required": 10,
+        "hitpoints": 850
+      },
+      {
+        "level": 9,
+        "th_required": 11,
+        "hitpoints": 900
+      },
+      {
+        "level": 10,
+        "th_required": 12,
+        "hitpoints": 980
+      },
+      {
+        "level": 11,
+        "th_required": 13,
+        "hitpoints": 1100
+      },
+      {
+        "level": 12,
+        "th_required": 13,
+        "hitpoints": 1200
+      },
+      {
+        "level": 13,
+        "th_required": 14,
+        "hitpoints": 1350
+      }
+    ]
+  },
+  "1000020": {
+    "data_id": 1000020,
+    "name": "Spell Forge",
+    "building_class": "Army",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 5,
+        "hitpoints": 425
+      },
+      {
+        "level": 2,
+        "th_required": 6,
+        "hitpoints": 470
+      },
+      {
+        "level": 3,
+        "th_required": 7,
+        "hitpoints": 520
+      },
+      {
+        "level": 4,
+        "th_required": 9,
+        "hitpoints": 600
+      },
+      {
+        "level": 5,
+        "th_required": 10,
+        "hitpoints": 720
+      },
+      {
+        "level": 6,
+        "th_required": 11,
+        "hitpoints": 840
+      }
+    ]
+  },
+  "1000021": {
+    "data_id": 1000021,
+    "name": "Bow",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 9,
+        "hitpoints": 1500
+      },
+      {
+        "level": 2,
+        "th_required": 9,
+        "hitpoints": 1900
+      },
+      {
+        "level": 3,
+        "th_required": 9,
+        "hitpoints": 2300
+      },
+      {
+        "level": 4,
+        "th_required": 10,
+        "hitpoints": 2700
+      },
+      {
+        "level": 5,
+        "th_required": 11,
+        "hitpoints": 3100
+      },
+      {
+        "level": 6,
+        "th_required": 12,
+        "hitpoints": 3500
+      },
+      {
+        "level": 7,
+        "th_required": 13,
+        "hitpoints": 3900
+      },
+      {
+        "level": 8,
+        "th_required": 13,
+        "hitpoints": 4200
+      },
+      {
+        "level": 9,
+        "th_required": 14,
+        "hitpoints": 4500
+      }
+    ]
+  },
+  "1000022": {
+    "data_id": 1000022,
+    "name": "Hero Altar Barbarian King",
+    "building_class": "Army",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 7,
+        "hitpoints": 250
+      }
+    ]
+  },
+  "1000023": {
+    "data_id": 1000023,
+    "name": "Dark Elixir Pump",
+    "building_class": "Resource",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 800
+      },
+      {
+        "level": 2,
+        "th_required": 1,
+        "hitpoints": 860
+      },
+      {
+        "level": 3,
+        "th_required": 1,
+        "hitpoints": 920
+      },
+      {
+        "level": 4,
+        "th_required": 9,
+        "hitpoints": 980
+      },
+      {
+        "level": 5,
+        "th_required": 9,
+        "hitpoints": 1060
+      },
+      {
+        "level": 6,
+        "th_required": 9,
+        "hitpoints": 1160
+      },
+      {
+        "level": 7,
+        "th_required": 10,
+        "hitpoints": 1280
+      },
+      {
+        "level": 8,
+        "th_required": 11,
+        "hitpoints": 1380
+      }
+    ]
+  },
+  "1000024": {
+    "data_id": 1000024,
+    "name": "Dark Elixir Storage",
+    "building_class": "Resource",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 2000
+      },
+      {
+        "level": 2,
+        "th_required": 1,
+        "hitpoints": 2200
+      },
+      {
+        "level": 3,
+        "th_required": 8,
+        "hitpoints": 2400
+      },
+      {
+        "level": 4,
+        "th_required": 8,
+        "hitpoints": 2600
+      },
+      {
+        "level": 5,
+        "th_required": 9,
+        "hitpoints": 2900
+      },
+      {
+        "level": 6,
+        "th_required": 9,
+        "hitpoints": 3200
+      },
+      {
+        "level": 7,
+        "th_required": 12,
+        "hitpoints": 3500
+      },
+      {
+        "level": 8,
+        "th_required": 13,
+        "hitpoints": 3800
+      },
+      {
+        "level": 9,
+        "th_required": 14,
+        "hitpoints": 4100
+      }
+    ]
+  },
+  "1000025": {
+    "data_id": 1000025,
+    "name": "Hero Altar Archer Queen",
+    "building_class": "Army",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 9,
+        "hitpoints": 250
+      }
+    ]
+  },
+  "1000026": {
+    "data_id": 1000026,
+    "name": "Dark Elixir Barrack",
+    "building_class": "Army",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 7,
+        "hitpoints": 500
+      },
+      {
+        "level": 2,
+        "th_required": 7,
+        "hitpoints": 550
+      },
+      {
+        "level": 3,
+        "th_required": 8,
+        "hitpoints": 600
+      },
+      {
+        "level": 4,
+        "th_required": 8,
+        "hitpoints": 650
+      },
+      {
+        "level": 5,
+        "th_required": 9,
+        "hitpoints": 700
+      },
+      {
+        "level": 6,
+        "th_required": 9,
+        "hitpoints": 750
+      },
+      {
+        "level": 7,
+        "th_required": 10,
+        "hitpoints": 800
+      },
+      {
+        "level": 8,
+        "th_required": 11,
+        "hitpoints": 850
+      },
+      {
+        "level": 9,
+        "th_required": 12,
+        "hitpoints": 900
+      }
+    ]
+  },
+  "1000027": {
+    "data_id": 1000027,
+    "name": "Dark Tower",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 10,
+        "hitpoints": 1500
+      },
+      {
+        "level": 2,
+        "th_required": 10,
+        "hitpoints": 1800
+      },
+      {
+        "level": 3,
+        "th_required": 10,
+        "hitpoints": 2100
+      },
+      {
+        "level": 4,
+        "th_required": 11,
+        "hitpoints": 2400
+      },
+      {
+        "level": 5,
+        "th_required": 11,
+        "hitpoints": 2700
+      },
+      {
+        "level": 6,
+        "th_required": 12,
+        "hitpoints": 3000
+      },
+      {
+        "level": 7,
+        "th_required": 13,
+        "hitpoints": 3300
+      },
+      {
+        "level": 8,
+        "th_required": 14,
+        "hitpoints": 3700
+      }
+    ]
+  },
+  "1000028": {
+    "data_id": 1000028,
+    "name": "Air Blaster",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 6,
+        "hitpoints": 750
+      },
+      {
+        "level": 2,
+        "th_required": 6,
+        "hitpoints": 800
+      },
+      {
+        "level": 3,
+        "th_required": 7,
+        "hitpoints": 850
+      },
+      {
+        "level": 4,
+        "th_required": 8,
+        "hitpoints": 900
+      },
+      {
+        "level": 5,
+        "th_required": 9,
+        "hitpoints": 950
+      },
+      {
+        "level": 6,
+        "th_required": 10,
+        "hitpoints": 1000
+      },
+      {
+        "level": 7,
+        "th_required": 11,
+        "hitpoints": 1050
+      }
+    ]
+  },
+  "1000029": {
+    "data_id": 1000029,
+    "name": "Mini Spell Factory",
+    "building_class": "Army",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 8,
+        "hitpoints": 600
+      },
+      {
+        "level": 2,
+        "th_required": 8,
+        "hitpoints": 660
+      },
+      {
+        "level": 3,
+        "th_required": 9,
+        "hitpoints": 720
+      },
+      {
+        "level": 4,
+        "th_required": 9,
+        "hitpoints": 780
+      },
+      {
+        "level": 5,
+        "th_required": 10,
+        "hitpoints": 840
+      }
+    ]
+  },
+  "1000030": {
+    "data_id": 1000030,
+    "name": "Hero Altar Grand Warden",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 11,
+        "hitpoints": 250
+      }
+    ]
+  },
+  "1000031": {
+    "data_id": 1000031,
+    "name": "Ancient Artillery",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 4,
+    "height": 4,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 11,
+        "hitpoints": 4000
+      },
+      {
+        "level": 2,
+        "th_required": 11,
+        "hitpoints": 4400
+      },
+      {
+        "level": 3,
+        "th_required": 12,
+        "hitpoints": 4800
+      },
+      {
+        "level": 4,
+        "th_required": 13,
+        "hitpoints": 5200
+      },
+      {
+        "level": 5,
+        "th_required": 14,
+        "hitpoints": 5600
+      }
+    ]
+  },
+  "1000032": {
+    "data_id": 1000032,
+    "name": "Bomb Tower",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 8,
+        "hitpoints": 650
+      },
+      {
+        "level": 2,
+        "th_required": 8,
+        "hitpoints": 700
+      },
+      {
+        "level": 3,
+        "th_required": 9,
+        "hitpoints": 750
+      },
+      {
+        "level": 4,
+        "th_required": 10,
+        "hitpoints": 850
+      },
+      {
+        "level": 5,
+        "th_required": 11,
+        "hitpoints": 1050
+      },
+      {
+        "level": 6,
+        "th_required": 11,
+        "hitpoints": 1300
+      },
+      {
+        "level": 7,
+        "th_required": 12,
+        "hitpoints": 1600
+      },
+      {
+        "level": 8,
+        "th_required": 13,
+        "hitpoints": 1900
+      },
+      {
+        "level": 9,
+        "th_required": 14,
+        "hitpoints": 2300
+      }
+    ]
+  },
+  "1000033": {
+    "data_id": 1000033,
+    "name": "WallStraight",
+    "building_class": "Wall",
+    "village": "builder",
+    "width": 1,
+    "height": 1,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 2,
+        "hitpoints": 1300
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 1600
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 1920
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 2304
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 2764
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 3316
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 3980
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 4776
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 5014
+      }
+    ]
+  },
+  "1000034": {
+    "data_id": 1000034,
+    "name": "Town Hall2",
+    "building_class": "Town Hall2",
+    "village": "builder",
+    "width": 4,
+    "height": 4,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": null,
+        "hitpoints": 100
+      },
+      {
+        "level": 2,
+        "th_required": null,
+        "hitpoints": 800
+      },
+      {
+        "level": 3,
+        "th_required": null,
+        "hitpoints": 960
+      },
+      {
+        "level": 4,
+        "th_required": null,
+        "hitpoints": 1152
+      },
+      {
+        "level": 5,
+        "th_required": null,
+        "hitpoints": 1382
+      },
+      {
+        "level": 6,
+        "th_required": null,
+        "hitpoints": 1658
+      },
+      {
+        "level": 7,
+        "th_required": null,
+        "hitpoints": 1990
+      },
+      {
+        "level": 8,
+        "th_required": null,
+        "hitpoints": 2388
+      },
+      {
+        "level": 9,
+        "th_required": null,
+        "hitpoints": 2507
+      }
+    ]
+  },
+  "1000035": {
+    "data_id": 1000035,
+    "name": "Elixir Pump2",
+    "building_class": "Resource",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 300
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 345
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 397
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 457
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 526
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 605
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 696
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 800
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 840
+      }
+    ]
+  },
+  "1000036": {
+    "data_id": 1000036,
+    "name": "Elixir Storage2",
+    "building_class": "Resource",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 3,
+        "hitpoints": 650
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 800
+      },
+      {
+        "level": 3,
+        "th_required": 4,
+        "hitpoints": 960
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 1152
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 1382
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 1658
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 1990
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 2388
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 2507
+      }
+    ]
+  },
+  "1000037": {
+    "data_id": 1000037,
+    "name": "Gold Mine2",
+    "building_class": "Resource",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 300
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 345
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 397
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 457
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 526
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 605
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 696
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 800
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 840
+      }
+    ]
+  },
+  "1000038": {
+    "data_id": 1000038,
+    "name": "Gold Storage2",
+    "building_class": "Resource",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 3,
+        "hitpoints": 650
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 800
+      },
+      {
+        "level": 3,
+        "th_required": 4,
+        "hitpoints": 960
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 1152
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 1382
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 1658
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 1990
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 2388
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 2507
+      }
+    ]
+  },
+  "1000039": {
+    "data_id": 1000039,
+    "name": "Clock Tower",
+    "building_class": "Resource",
+    "village": "builder",
+    "width": 4,
+    "height": 4,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 4,
+        "hitpoints": 650
+      },
+      {
+        "level": 2,
+        "th_required": 4,
+        "hitpoints": 800
+      },
+      {
+        "level": 3,
+        "th_required": 4,
+        "hitpoints": 960
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 1152
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 1382
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 1658
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 1990
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 2388
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 2507
+      }
+    ]
+  },
+  "1000040": {
+    "data_id": 1000040,
+    "name": "Barrack2",
+    "building_class": "Army",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 300
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 345
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 397
+      },
+      {
+        "level": 4,
+        "th_required": 3,
+        "hitpoints": 457
+      },
+      {
+        "level": 5,
+        "th_required": 4,
+        "hitpoints": 526
+      },
+      {
+        "level": 6,
+        "th_required": 4,
+        "hitpoints": 605
+      },
+      {
+        "level": 7,
+        "th_required": 5,
+        "hitpoints": 696
+      },
+      {
+        "level": 8,
+        "th_required": 6,
+        "hitpoints": 800
+      },
+      {
+        "level": 9,
+        "th_required": 7,
+        "hitpoints": 920
+      },
+      {
+        "level": 10,
+        "th_required": 8,
+        "hitpoints": 1058
+      },
+      {
+        "level": 11,
+        "th_required": 9,
+        "hitpoints": 1111
+      }
+    ]
+  },
+  "1000041": {
+    "data_id": 1000041,
+    "name": "Double Cannon",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 2,
+        "hitpoints": 600
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 690
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 794
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 913
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 1050
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 1208
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 1389
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 1597
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 1677
+      }
+    ]
+  },
+  "1000042": {
+    "data_id": 1000042,
+    "name": "Troop Housing2",
+    "building_class": "Army",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 300
+      }
+    ]
+  },
+  "1000043": {
+    "data_id": 1000043,
+    "name": "Tesla Tower2",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 3,
+        "hitpoints": 300
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 345
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 397
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 457
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 526
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 605
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 696
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 800
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 840
+      }
+    ]
+  },
+  "1000044": {
+    "data_id": 1000044,
+    "name": "Cannon2",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 500
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 575
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 661
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 760
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 874
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 1005
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 1156
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 1329
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 1395
+      }
+    ]
+  },
+  "1000045": {
+    "data_id": 1000045,
+    "name": "Multi Mortar",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 5,
+        "hitpoints": 500
+      },
+      {
+        "level": 2,
+        "th_required": 5,
+        "hitpoints": 575
+      },
+      {
+        "level": 3,
+        "th_required": 5,
+        "hitpoints": 661
+      },
+      {
+        "level": 4,
+        "th_required": 5,
+        "hitpoints": 760
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 874
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 1005
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 1156
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 1329
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 1395
+      }
+    ]
+  },
+  "1000046": {
+    "data_id": 1000046,
+    "name": "Laboratory2",
+    "building_class": "Army",
+    "village": "builder",
+    "width": 4,
+    "height": 4,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 650
+      },
+      {
+        "level": 2,
+        "th_required": 2,
+        "hitpoints": 800
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 960
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 1152
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 1382
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 1658
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 1990
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 2388
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 2507
+      }
+    ]
+  },
+  "1000047": {
+    "data_id": 1000047,
+    "name": "Worker Building2",
+    "building_class": "Worker2",
+    "village": "builder",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 300
+      }
+    ]
+  },
+  "1000048": {
+    "data_id": 1000048,
+    "name": "Archer Tower2",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 2,
+        "hitpoints": 500
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 575
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 661
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 760
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 874
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 1005
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 1156
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 1329
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 1395
+      }
+    ]
+  },
+  "1000049": {
+    "data_id": 1000049,
+    "name": "Rocket",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 9,
+        "hitpoints": 1000
+      }
+    ]
+  },
+  "1000050": {
+    "data_id": 1000050,
+    "name": "Air Defense Mini",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 3,
+        "hitpoints": 400
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 460
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 529
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 608
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 699
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 804
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 925
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 1064
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 1117
+      }
+    ]
+  },
+  "1000051": {
+    "data_id": 1000051,
+    "name": "Guard Post",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 4,
+        "hitpoints": 300
+      },
+      {
+        "level": 2,
+        "th_required": 4,
+        "hitpoints": 345
+      },
+      {
+        "level": 3,
+        "th_required": 4,
+        "hitpoints": 397
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 457
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 526
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 605
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 696
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 800
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 840
+      }
+    ]
+  },
+  "1000052": {
+    "data_id": 1000052,
+    "name": "Mega Tesla",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 8,
+        "hitpoints": 700
+      },
+      {
+        "level": 2,
+        "th_required": 8,
+        "hitpoints": 805
+      },
+      {
+        "level": 3,
+        "th_required": 8,
+        "hitpoints": 926
+      },
+      {
+        "level": 4,
+        "th_required": 8,
+        "hitpoints": 1065
+      },
+      {
+        "level": 5,
+        "th_required": 8,
+        "hitpoints": 1225
+      },
+      {
+        "level": 6,
+        "th_required": 8,
+        "hitpoints": 1409
+      },
+      {
+        "level": 7,
+        "th_required": 8,
+        "hitpoints": 1620
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 1863
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 1956
+      }
+    ]
+  },
+  "1000053": {
+    "data_id": 1000053,
+    "name": "Hero Altar Warmachine",
+    "building_class": "Army",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 5,
+        "hitpoints": 250
+      }
+    ]
+  },
+  "1000054": {
+    "data_id": 1000054,
+    "name": "Air Defense2",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 4,
+        "hitpoints": 1000
+      },
+      {
+        "level": 2,
+        "th_required": 4,
+        "hitpoints": 1150
+      },
+      {
+        "level": 3,
+        "th_required": 4,
+        "hitpoints": 1323
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 1521
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 1749
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 2011
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 2313
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 2660
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 2793
+      }
+    ]
+  },
+  "1000055": {
+    "data_id": 1000055,
+    "name": "Crusher",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 3,
+        "hitpoints": 1000
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 1150
+      },
+      {
+        "level": 3,
+        "th_required": 4,
+        "hitpoints": 1323
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 1521
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 1749
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 2011
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 2313
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 2660
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 2793
+      }
+    ]
+  },
+  "1000056": {
+    "data_id": 1000056,
+    "name": "Flamer",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 6,
+        "hitpoints": 800
+      },
+      {
+        "level": 2,
+        "th_required": 6,
+        "hitpoints": 920
+      },
+      {
+        "level": 3,
+        "th_required": 6,
+        "hitpoints": 1058
+      },
+      {
+        "level": 4,
+        "th_required": 6,
+        "hitpoints": 1217
+      },
+      {
+        "level": 5,
+        "th_required": 6,
+        "hitpoints": 1400
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 1610
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 1852
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 2130
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 2237
+      }
+    ]
+  },
+  "1000057": {
+    "data_id": 1000057,
+    "name": "Giant Cannon",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 7,
+        "hitpoints": 700
+      },
+      {
+        "level": 2,
+        "th_required": 7,
+        "hitpoints": 805
+      },
+      {
+        "level": 3,
+        "th_required": 7,
+        "hitpoints": 926
+      },
+      {
+        "level": 4,
+        "th_required": 7,
+        "hitpoints": 1065
+      },
+      {
+        "level": 5,
+        "th_required": 7,
+        "hitpoints": 1225
+      },
+      {
+        "level": 6,
+        "th_required": 7,
+        "hitpoints": 1409
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 1620
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 1863
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 1956
+      }
+    ]
+  },
+  "1000058": {
+    "data_id": 1000058,
+    "name": "Gem Mine",
+    "building_class": "Resource",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 3,
+        "hitpoints": 300
+      },
+      {
+        "level": 2,
+        "th_required": 3,
+        "hitpoints": 345
+      },
+      {
+        "level": 3,
+        "th_required": 3,
+        "hitpoints": 397
+      },
+      {
+        "level": 4,
+        "th_required": 4,
+        "hitpoints": 457
+      },
+      {
+        "level": 5,
+        "th_required": 5,
+        "hitpoints": 526
+      },
+      {
+        "level": 6,
+        "th_required": 6,
+        "hitpoints": 605
+      },
+      {
+        "level": 7,
+        "th_required": 7,
+        "hitpoints": 696
+      },
+      {
+        "level": 8,
+        "th_required": 8,
+        "hitpoints": 800
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 840
+      }
+    ]
+  },
+  "1000059": {
+    "data_id": 1000059,
+    "name": "SiegeWorkshop",
+    "building_class": "Army",
+    "village": "home",
+    "width": 4,
+    "height": 4,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 12,
+        "hitpoints": 1000
+      },
+      {
+        "level": 2,
+        "th_required": 12,
+        "hitpoints": 1100
+      },
+      {
+        "level": 3,
+        "th_required": 12,
+        "hitpoints": 1200
+      },
+      {
+        "level": 4,
+        "th_required": 13,
+        "hitpoints": 1300
+      },
+      {
+        "level": 5,
+        "th_required": 13,
+        "hitpoints": 1400
+      }
+    ]
+  },
+  "1000060": {
+    "data_id": 1000060,
+    "name": "CannonNPC",
+    "building_class": "Npc",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 250
+      }
+    ]
+  },
+  "1000061": {
+    "data_id": 1000061,
+    "name": "Goblin Castle",
+    "building_class": "Npc",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 4000
+      }
+    ]
+  },
+  "1000062": {
+    "data_id": 1000062,
+    "name": "Dragon Cave",
+    "building_class": "Npc",
+    "village": "home",
+    "width": 4,
+    "height": 4,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 25000
+      }
+    ]
+  },
+  "1000063": {
+    "data_id": 1000063,
+    "name": "LavaLauncher",
+    "building_class": "Defense",
+    "village": "builder",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 9,
+        "hitpoints": 500
+      },
+      {
+        "level": 2,
+        "th_required": 9,
+        "hitpoints": 575
+      },
+      {
+        "level": 3,
+        "th_required": 9,
+        "hitpoints": 661
+      },
+      {
+        "level": 4,
+        "th_required": 9,
+        "hitpoints": 760
+      },
+      {
+        "level": 5,
+        "th_required": 9,
+        "hitpoints": 874
+      },
+      {
+        "level": 6,
+        "th_required": 9,
+        "hitpoints": 1005
+      },
+      {
+        "level": 7,
+        "th_required": 9,
+        "hitpoints": 1156
+      },
+      {
+        "level": 8,
+        "th_required": 9,
+        "hitpoints": 1329
+      },
+      {
+        "level": 9,
+        "th_required": 9,
+        "hitpoints": 1395
+      }
+    ]
+  },
+  "1000064": {
+    "data_id": 1000064,
+    "name": "Master Builder Building",
+    "building_class": "Worker2",
+    "village": "home",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 1,
+        "hitpoints": 250
+      }
+    ]
+  },
+  "1000065": {
+    "data_id": 1000065,
+    "name": "Arto Building",
+    "building_class": "Worker",
+    "village": "builder",
+    "width": 2,
+    "height": 2,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 9,
+        "hitpoints": 250
+      },
+      {
+        "level": 2,
+        "th_required": 9,
+        "hitpoints": 250
+      },
+      {
+        "level": 3,
+        "th_required": 9,
+        "hitpoints": 250
+      },
+      {
+        "level": 4,
+        "th_required": 9,
+        "hitpoints": 250
+      },
+      {
+        "level": 5,
+        "th_required": 9,
+        "hitpoints": 250
+      }
+    ]
+  },
+  "1000066": {
+    "data_id": 1000066,
+    "name": "Hero Altar Royal Champion",
+    "building_class": "Army",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 13,
+        "hitpoints": 250
+      }
+    ]
+  },
+  "1000067": {
+    "data_id": 1000067,
+    "name": "Scattershot",
+    "building_class": "Defense",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 13,
+        "hitpoints": 3600
+      },
+      {
+        "level": 2,
+        "th_required": 13,
+        "hitpoints": 4200
+      },
+      {
+        "level": 3,
+        "th_required": 14,
+        "hitpoints": 4800
+      }
+    ]
+  },
+  "1000068": {
+    "data_id": 1000068,
+    "name": "Pet Shop",
+    "building_class": "Army",
+    "village": "home",
+    "width": 3,
+    "height": 3,
+    "levels": [
+      {
+        "level": 1,
+        "th_required": 14,
+        "hitpoints": 700
+      },
+      {
+        "level": 2,
+        "th_required": 14,
+        "hitpoints": 800
+      },
+      {
+        "level": 3,
+        "th_required": 14,
+        "hitpoints": 900
+      },
+      {
+        "level": 4,
+        "th_required": 14,
+        "hitpoints": 1000
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "_source": "globals.csv extraido de um dump publico da versao 8.67.3 do CoC (github.com/milanmaldini/Clashofclans-Crack). Jogo atual e mais recente; valores de tempo/duracao ja mudaram (ex.: ATTACK_LENGTH_SEC era 210 nessa versao, hoje e 180). As constantes de MECANICA de combate (raios de agro/retarget) tendem a mudar pouco entre versoes, mas devem ser tratadas como APROXIMACAO ate validar contra a versao atual (via replay/telemetria ao vivo).",
+  "CHAR_VS_CHAR_RADIUS_FOR_ATTACKER": {
+    "value": 7,
+    "unit": "tiles",
+    "desc": "raio em que uma tropa ATACANTE sem preferred_target_class percebe e troca o alvo para uma tropa/heroi DEFENSOR (Castelo do Cla liberado, heroi, esqueleto de armadilha). Tropas COM preferencia (Defense/Resource/Wall) ignoram isso e seguem pro predio preferido mesmo sob ataque."
+  },
+  "CASTLE_DEFENDER_SEARCH_RADIUS": {
+    "value": 9,
+    "unit": "tiles",
+    "desc": "raio em que uma tropa defensora (ja liberada do Castelo do Cla) procura um alvo pra atacar."
+  },
+  "CLAN_CASTLE_RADIUS": {
+    "value": 13,
+    "unit": "tiles",
+    "desc": "raio de deteccao do Castelo do Cla em modo guarda: tropa atacante entrando nesse raio libera as tropas defensoras. Wiki da versao atual cita 12 -- provavelmente ajustado em alguma atualizacao; usar 12 como default e validar."
+  },
+  "FORGET_TARGET_TIME": {
+    "value": 6000,
+    "unit": "ms",
+    "desc": "tempo que uma tropa preza um alvo que nao consegue alcancar (bloqueada) antes de esquecer e escolher outro alvo. Central pra simular funil/travamento em muralha."
+  },
+  "ATTACK_PREPARATION_LENGTH_SEC": {
+    "value": 30,
+    "unit": "s",
+    "desc": "janela de scout antes da batalha comecar. Bate com o observado ao vivo (~28-30s)."
+  },
+  "ATTACK_LENGTH_SEC": {
+    "value": 210,
+    "unit": "s",
+    "desc": "duracao da batalha nessa versao antiga. ATUAL = 180s (3 min) -- confirmado ao vivo nesta sessao (ver utils/calib_attack_deploy.py, partida contra 'Madstop' mostrou 'Battle ends in: 2m 59s')."
+  },
+  "WALL_BREAKER_SMART_RADIUS": {
+    "value": 2500,
+    "unit": "unidades internas (raw, nao dividido por 100)",
+    "desc": "raio de busca do Quebra-Muro por muralhas 'smart' (prioriza segmento que abre acesso a mais predios)."
+  },
+  "WALL_BREAKER_SMART_CNT_LIMIT": {
+    "value": 30,
+    "unit": "count",
+    "desc": "limite de quebra-muros considerados no calculo smart."
+  },
+  "BLOCKED_ATTACK_POSITION_PENALTY": {
+    "value": 8,
+    "unit": "peso (adimensional, usado no scoring interno de posicao de ataque)",
+    "desc": "penalidade aplicada quando a posicao de ataque calculada fica bloqueada (ex.: dentro de muralha) -- o motor reavalia posicoes vizinhas."
+  },
+  "REMEMBER_ORIGINAL_TARGET": {
+    "value": true,
+    "desc": "flag: a tropa lembra o alvo original mesmo depois de ser desviada (ex.: por briga com defensor) -- relevante pra decidir se ela VOLTA pro predio apos vencer o combate contra a tropa defensora."
+  },
+  "JUMP_WHEN_HIT_JUMPABLE": { "value": true, "desc": "tropas que podem pular muralha (defensoras, ver ENABLE_DEFENDING_ALLIANCE_TROOP_JUMP) pulam automaticamente se baterem numa muralha pulavel." },
+  "ENABLE_DEFENDING_ALLIANCE_TROOP_JUMP": { "value": true, "desc": "tropas defensoras do Castelo do Cla podem pular muralhas (tropas atacantes normalmente NAO podem, exceto is_jumper)." },
+  "SLIDE_ALONG_OBSTACLES": { "value": false, "desc": "tropa NAO desliza ao longo de obstaculos ao colidir -- para/replaneja rota." }
+}
