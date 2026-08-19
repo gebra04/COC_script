@@ -1,0 +1,11 @@
+{
+  "resolution": [
+    1366,
+    739
+  ],
+  "density": 180,
+  "origin_x": 620.0,
+  "origin_y": -248.0,
+  "tile_w": 46.0,
+  "note": "calibrado na vila-casa via overlay-fit (ground centers). origin embute o PAN atual; tile_w embute o ZOOM atual. Em ataque, tile_w vale se o zoom for igual; origin muda com o pan -> ler da memoria (--cam-hunt)."
+}

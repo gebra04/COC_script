@@ -1,0 +1,95 @@
+{
+  "source_screenshot": "/tmp/coc_calib/baseline_shot.png",
+  "lines": [
+    {
+      "x0": 277,
+      "y0": 360,
+      "x1": 473,
+      "y1": 220
+    },
+    {
+      "x0": 276,
+      "y0": 216,
+      "x1": 473,
+      "y1": 367
+    },
+    {
+      "x0": 991,
+      "y0": 219,
+      "x1": 1078,
+      "y1": 284
+    }
+  ],
+  "points": [
+    {
+      "x": 696,
+      "y": 563,
+      "label": "TH"
+    },
+    {
+      "x": 536,
+      "y": 509,
+      "label": "CANNON"
+    },
+    {
+      "x": 370,
+      "y": 352,
+      "label": "CANNON"
+    },
+    {
+      "x": 275,
+      "y": 285,
+      "label": "CANNON"
+    },
+    {
+      "x": 597,
+      "y": 456,
+      "label": "CABANA DO CONSTRUTOR"
+    },
+    {
+      "x": 669,
+      "y": 410,
+      "label": "CABANA DO CONTRUTOR"
+    },
+    {
+      "x": 792,
+      "y": 431,
+      "label": "MINA DE OURO"
+    },
+    {
+      "x": 860,
+      "y": 531,
+      "label": "DEPOSITO DE ELIXIR"
+    },
+    {
+      "x": 371,
+      "y": 209,
+      "label": "MINA DE OURO"
+    },
+    {
+      "x": 469,
+      "y": 281,
+      "label": "COLETOR DE ELIXIR"
+    },
+    {
+      "x": 371,
+      "y": 208,
+      "label": "13.5,22.5"
+    },
+    {
+      "x": 467,
+      "y": 279,
+      "label": "16.5,22.5"
+    },
+    {
+      "x": 371,
+      "y": 350,
+      "label": "16.5,25.5"
+    },
+    {
+      "x": 274,
+      "y": 285,
+      "label": "13.5,25.5"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolution": [
+    1366,
+    739
+  ],
+  "density": 180,
+  "origin_x": 832.0,
+  "origin_y": -218.0,
+  "tile_w": 46.0,
+  "note": "calibrado em ATAQUE (multiplayer) via deploy real -> leitura de memoria do tile de spawn. tile_w reaproveitado da vila (mesmo zoom, confirmado por overlay). origin muda a cada partida (pan novo) - recalibrar por ataque."
+}

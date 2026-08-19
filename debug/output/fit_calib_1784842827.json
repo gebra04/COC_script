@@ -1,0 +1,9 @@
+{
+  "origin_x": 687.5499999999997,
+  "origin_y": -405.9,
+  "tile_w": 70.39999999999998,
+  "n_points": 4,
+  "rms_error_px": 10.34015231996125,
+  "max_error_px": 19.699999999999818,
+  "note": "ajustado por lstsq a partir de 4 pontos manuais em baseline_shot.png"
+}

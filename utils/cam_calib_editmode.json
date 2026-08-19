@@ -1,0 +1,7 @@
+{
+  "resolution": [1366, 737],
+  "origin_x": 586.0,
+  "origin_y": -612.0,
+  "tile_w": 81.0,
+  "note": "calibrado no War Base Edit Mode via 2 pontos reais: cabana do construtor no centro do mapa (tile 22,22, mapa 44x44, confirmado pelo usuario) + a mesma cabana arrastada 10 tiles no eixo ty. Zoom/pan proprios desse modo de edicao -- NAO e o mesmo da vila normal (origin=620,-248,tile_w=46) nem do ataque."
+}
