@@ -103,7 +103,7 @@ Os presets são salvos em formato JSON no arquivo `presets.json`. Exemplo:
 - Rápido e eficiente
 
 ### Modo 2: Ganhar
-- Derrota o inimigo completamente
+- Derrota o inimigo
 - Oferece melhor recompensa que perder
 - Pode usar 1 ou 2 vilas
 
@@ -113,8 +113,8 @@ Os presets são salvos em formato JSON no arquivo `presets.json`. Exemplo:
 - Flexível e estratégico
 
 ### Modo 4: Dragão
-- Ataque especializado com dragões
-- Excelente para bases principais fortes
+- Ataque com dragões
+- Para a base principal
 - Suporta todos os 4 heróis
 - Requer máquina de cerco para maior eficiência
 

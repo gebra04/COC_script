@@ -100,6 +100,73 @@ def iniciar_bot(config):
             break
 
 
+def iniciar_gemeo_digital(config):
+    """
+    Executa o loop de inferência do agente H-PPO sobre o Gêmeo Digital (Camada 4).
+
+    Arquitetura B (ver `pesquisa/06`): a base inimiga é escaneada UMA VEZ
+    (`utils.base_loader`, leitor externo passivo — não injeta/hooka o jogo) e
+    o combate inteiro é SIMULADO por `utils.combat_sim`/`utils.attack_simulator`,
+    não observado ao vivo. Modo "sombra": monta a base + o exército, roda o
+    `ActorCriticHybridNetwork` amostrando ações, imprimindo ação/recompensa/
+    valor estimado. Não aciona nenhum input real no jogo — a tradução da ação
+    amostrada em toque real fica pro atuador (`utils/adb_actuator.py`), fora
+    do escopo desta função de demonstração.
+
+    Args:
+        config (dict): Pode conter:
+            base_path (str): captura de base salva (`utils.base_loader.save_base`).
+            pid (str|int, padrão "auto"): se `base_path` não for dado, tenta
+                escanear a base carregada ao vivo (Waydroid aberto, ver
+                `utils.base_loader.read_enemy_base`).
+            troop_housing_space (int, padrão 300), rage_count (int, padrão 5):
+                repassados a `utils.army.dragon_attack_army` — ajuste pra vila real.
+            grid_size (int, padrão `utils.battle_grid.GRID_SIZE`=44),
+            passos (int, padrão 100).
+
+    Nota: Os imports são feitos aqui (lazy loading) porque dependem de
+    `torch`/`gymnasium`/`numpy`, desnecessários para o fluxo legado de
+    automação visual.
+    """
+    from utils import base_loader
+    from utils.army import dragon_attack_army
+    from utils.battle_grid import GRID_SIZE
+    from utils.clash_env import ClashDigitalTwinEnv
+    from utils.hppo_network import ActorCriticHybridNetwork, observation_to_tensors
+
+    grid_size = config.get('grid_size', GRID_SIZE)
+    passos = config.get('passos', 100)
+    army = dragon_attack_army(
+        troop_housing_space=config.get('troop_housing_space', 300),
+        rage_count=config.get('rage_count', 5),
+    )
+
+    base_path = config.get('base_path')
+    if base_path:
+        base_entities = base_loader.load_base(base_path)
+    else:
+        base_entities = base_loader.read_enemy_base(pid=config.get('pid', 'auto'))
+    print(f"[GêmeoDigital] base: {base_loader.base_report(base_entities)}")
+
+    env = ClashDigitalTwinEnv(base_entities=base_entities, army=army, grid_size=grid_size)
+    net = ActorCriticHybridNetwork(action_dim=env.action_space["type"].n, grid_size=grid_size)
+
+    obs, _info = env.reset()
+    for passo in range(passos):
+        grid_tensor, global_tensor = observation_to_tensors(obs)
+        action, value = net.sample_action(grid_tensor, global_tensor)
+
+        obs, reward, terminated, truncated, _info = env.step(action)
+        print(
+            f"[GêmeoDigital] passo={passo} ação={action} "
+            f"V(s)={value.item():.4f} recompensa={reward:.4f}"
+        )
+
+        if terminated or truncated:
+            print("[GêmeoDigital] episódio encerrado.")
+            break
+
+
 if __name__ == "__main__":
     # Para testes diretos via terminal (deixado para compatibilidade)
     presets = carregar_presets()

@@ -2,6 +2,11 @@ import customtkinter as ctk
 import threading
 import json
 import os
+import io
+import tkinter as tk
+
+# Import leve (só `os`), seguro em nível de módulo: não força numpy/torch.
+from utils.digital_twin_paths import DEFAULT_SOCKET_PATH
 
 # Importação lazy para evitar dependências de X11 na GUI
 def carregar_presets():
@@ -54,8 +59,17 @@ class COCBotGUI(ctk.CTk):
         # Aba 2: Criar/Editar Presets
         self.aba_presets = self.abas.add("Criar/Editar Presets")
         self._criar_aba_presets()
-    
-    
+
+        # Aba 3: Gêmeo Digital (telemetria nativa somente leitura, Camadas 3/4)
+        self.aba_gemeo = self.abas.add("Gêmeo Digital")
+        self._gemeo_receiver = None
+        self._gemeo_polling = False
+        self._thread_gemeo = None
+        self._criar_aba_gemeo_digital()
+
+        self.protocol("WM_DELETE_WINDOW", self._ao_fechar)
+
+
     # ==================== ABA 1: EXECUTAR ATAQUE ====================
     
     def _criar_aba_executar(self):
@@ -611,6 +625,247 @@ Exército:
         self.check_campea.deselect()
         self.check_siege.deselect()
         self.check_castelo.select()
+
+
+    # ==================== ABA 3: GÊMEO DIGITAL ====================
+
+    def _criar_aba_gemeo_digital(self):
+        """Cria a aba de telemetria do Gêmeo Digital (Camadas 3/4, somente leitura)."""
+
+        self.aba_gemeo.grid_columnconfigure(0, weight=1)
+        self.aba_gemeo.grid_rowconfigure(2, weight=1)
+
+        # ========== SEÇÃO FIXA: CONEXÃO ==========
+        frame_conexao = ctk.CTkFrame(self.aba_gemeo)
+        frame_conexao.grid(row=0, column=0, sticky="ew", padx=15, pady=15)
+        frame_conexao.grid_columnconfigure(1, weight=1)
+
+        label_socket = ctk.CTkLabel(frame_conexao, text="Socket IPC:", font=("Arial", 12, "bold"))
+        label_socket.grid(row=0, column=0, sticky="w", padx=5, pady=5)
+
+        self.entry_socket_path = ctk.CTkEntry(frame_conexao, font=("Arial", 11))
+        self.entry_socket_path.grid(row=0, column=1, sticky="ew", padx=5, pady=5)
+        self.entry_socket_path.insert(0, DEFAULT_SOCKET_PATH)
+
+        self.btn_conectar_gemeo = ctk.CTkButton(
+            frame_conexao,
+            text="🔌 Conectar Telemetria",
+            command=self._conectar_gemeo_digital,
+            font=("Arial", 12, "bold"),
+            fg_color="green",
+            hover_color="darkgreen"
+        )
+        self.btn_conectar_gemeo.grid(row=0, column=2, sticky="ew", padx=5, pady=5)
+
+        self.btn_desconectar_gemeo = ctk.CTkButton(
+            frame_conexao,
+            text="⏹ Desconectar",
+            command=self._desconectar_gemeo_digital,
+            state="disabled",
+            font=("Arial", 12, "bold"),
+            fg_color="red",
+            hover_color="darkred"
+        )
+        self.btn_desconectar_gemeo.grid(row=0, column=3, sticky="ew", padx=5, pady=5)
+
+        # ========== SEÇÃO: MAPA AO VIVO (renderizador minimalista) ==========
+        # Independente do polling de texto acima: usa `telemetry_capture` (que
+        # roda `mem_reader.py --json` via sudo, arquitetura B — a que funciona
+        # na pratica, ver mapeamento_arquivos.md) em vez do `ZeroCopyIPCReceiver`,
+        # pq o renderizador precisa do data-id/classe completos (o IPC reduz a
+        # telemetria a um type_id generico 1/2/3, sem essa granularidade).
+        frame_mapa = ctk.CTkFrame(self.aba_gemeo)
+        frame_mapa.grid(row=1, column=0, sticky="ew", padx=15, pady=(0, 10))
+
+        self.btn_mapa_gemeo = ctk.CTkButton(
+            frame_mapa, text="🗺 Iniciar Mapa ao Vivo",
+            command=self._toggle_mapa_gemeo, font=("Arial", 11, "bold"))
+        self.btn_mapa_gemeo.pack(anchor="w", padx=10, pady=(8, 4))
+
+        self._mapa_polling = False
+        self._thread_mapa = None
+        self._mapa_photo = None
+        self._mapa_canvas_size = 440
+        self.canvas_mapa_gemeo = tk.Canvas(
+            frame_mapa, width=self._mapa_canvas_size, height=self._mapa_canvas_size,
+            bg="#18181c", highlightthickness=0)
+        self.canvas_mapa_gemeo.pack(padx=10, pady=(0, 10))
+
+        # ========== SEÇÃO SCROLLÁVEL: TELEMETRIA (texto) ==========
+        scroll_frame = ctk.CTkScrollableFrame(self.aba_gemeo)
+        scroll_frame.grid(row=2, column=0, sticky="nsew", padx=0, pady=10)
+
+        label_info = ctk.CTkLabel(
+            scroll_frame,
+            text="Estado da vila reconstruído da memória (somente leitura — nenhum input é enviado ao jogo):",
+            font=("Arial", 12, "bold")
+        )
+        label_info.pack(anchor="w", padx=15, pady=(10, 5))
+
+        self.text_gemeo_digital = ctk.CTkTextbox(scroll_frame, height=250, font=("Courier", 10))
+        self.text_gemeo_digital.pack(fill="both", expand=True, padx=15, pady=5)
+        self.text_gemeo_digital.configure(state="disabled")
+
+        # ========== SEÇÃO FIXA: STATUS ==========
+        self.label_status_gemeo = ctk.CTkLabel(
+            self.aba_gemeo, text="Desconectado", text_color="gray", font=("Arial", 11)
+        )
+        self.label_status_gemeo.grid(row=3, column=0, sticky="w", padx=20, pady=(0, 10))
+
+    def _conectar_gemeo_digital(self):
+        """Conecta ao receptor IPC Zero-Copy (Camada 3) e inicia o polling da telemetria."""
+        socket_path = self.entry_socket_path.get().strip() or DEFAULT_SOCKET_PATH
+
+        try:
+            # Importação lazy: numpy só é necessário quando esta aba é usada.
+            from utils.ipc_receiver import ZeroCopyIPCReceiver
+        except ImportError as e:
+            self.label_status_gemeo.configure(text=f"Erro: dependência ausente ({e})", text_color="red")
+            return
+
+        try:
+            receiver = ZeroCopyIPCReceiver(socket_path)
+            receiver.connect_and_map()
+        except (OSError, RuntimeError) as e:
+            self.label_status_gemeo.configure(text=f"Erro ao conectar em '{socket_path}': {e}", text_color="red")
+            return
+
+        self._gemeo_receiver = receiver
+        self._gemeo_polling = True
+        self.btn_conectar_gemeo.configure(state="disabled")
+        self.btn_desconectar_gemeo.configure(state="normal")
+        self.label_status_gemeo.configure(text=f"Conectado em {socket_path}", text_color="green")
+
+        self._thread_gemeo = threading.Thread(target=self._loop_polling_gemeo_digital, daemon=True)
+        self._thread_gemeo.start()
+
+    def _loop_polling_gemeo_digital(self):
+        """Lê a telemetria mais recente a cada 0.5s e atualiza a caixa de texto."""
+        import time as _time
+
+        while self._gemeo_polling and self._gemeo_receiver is not None:
+            try:
+                telemetria = self._gemeo_receiver.read_latest_telemetry()
+            except (ValueError, OSError):
+                break
+
+            texto = self._formatar_telemetria(telemetria)
+            self.text_gemeo_digital.configure(state="normal")
+            self.text_gemeo_digital.delete("1.0", "end")
+            self.text_gemeo_digital.insert("1.0", texto)
+            self.text_gemeo_digital.configure(state="disabled")
+            _time.sleep(0.5)
+
+    def _formatar_telemetria(self, telemetria):
+        """Formata (sequence, entities_ndarray) em texto legível para a caixa de telemetria."""
+        if not telemetria:
+            return "Aguardando frames de telemetria..."
+
+        sequence, entities = telemetria
+        nomes_tipo = {1: "Defesa", 2: "Tropa", 3: "Recurso"}
+
+        linhas = [f"Frame #{sequence} — {len(entities)} entidade(s)", ""]
+        for ent in entities[:50]:
+            tipo = nomes_tipo.get(int(ent["type_id"]), f"Tipo {int(ent['type_id'])}")
+            hp_ratio = float(ent["current_hp"]) / max(float(ent["max_hp"]), 1.0)
+            linhas.append(
+                f"  #{int(ent['entity_id']):>5}  {tipo:<8}  "
+                f"pos=({float(ent['pos_x']):6.1f}, {float(ent['pos_y']):6.1f})  "
+                f"hp={hp_ratio * 100:5.1f}%"
+            )
+        if len(entities) > 50:
+            linhas.append(f"  ... e mais {len(entities) - 50} entidade(s)")
+
+        return "\n".join(linhas)
+
+    def _toggle_mapa_gemeo(self):
+        """Liga/desliga o polling do mapa ao vivo (thread separada do texto)."""
+        if self._mapa_polling:
+            self._mapa_polling = False
+            if self._thread_mapa is not None:
+                self._thread_mapa.join(timeout=2.0)
+                self._thread_mapa = None
+            self.btn_mapa_gemeo.configure(text="🗺 Iniciar Mapa ao Vivo")
+            return
+
+        self._mapa_polling = True
+        self.btn_mapa_gemeo.configure(text="⏹ Parar Mapa ao Vivo")
+        self.canvas_mapa_gemeo.delete("all")
+        self.canvas_mapa_gemeo.create_text(
+            self._mapa_canvas_size / 2, self._mapa_canvas_size / 2,
+            text="Carregando base (mem_reader.py)...", fill="#999", font=("Arial", 12))
+        self._thread_mapa = threading.Thread(target=self._loop_polling_mapa_gemeo, daemon=True)
+        self._thread_mapa.start()
+
+    def _loop_polling_mapa_gemeo(self):
+        """Lê a base (mem_reader.py --json via sudo) e renderiza a cada ~1s.
+        Roda em thread separada, mas so faz trabalho SEM tocar em widgets Tk
+        aqui (Tk nao e thread-safe); o `self.after(0, ...)` agenda a
+        atualizacao de fato na thread principal."""
+        import time as _time
+        from utils.telemetry_capture import read_telemetry
+        from utils.sim_render import render_frame
+
+        while self._mapa_polling:
+            try:
+                raw = read_telemetry()
+                state = {"entities": raw.get("entities", []), "t": 0.0,
+                         "destruction_pct": 0.0, "troops_alive": 0, "troops_total": 0}
+                img = render_frame(state, size=self._mapa_canvas_size)
+                buf = io.BytesIO()
+                img.save(buf, format="PNG")
+                png_bytes = buf.getvalue()
+                self.after(0, lambda b=png_bytes: self._atualizar_canvas_mapa(b))
+            except Exception as e:
+                self.after(0, lambda e=e: self._mostrar_erro_mapa(e))
+            _time.sleep(1.0)
+
+    def _mostrar_erro_mapa(self, e: Exception):
+        """Erro visivel DIRETO no canvas (a label de status fica longe, embaixo
+        de tudo -- facil de nao notar) alem de atualizar a label tambem."""
+        self.label_status_gemeo.configure(text=f"Mapa: {e}", text_color="orange")
+        if not self._mapa_polling:
+            return
+        self.canvas_mapa_gemeo.delete("all")
+        self.canvas_mapa_gemeo.create_text(
+            self._mapa_canvas_size / 2, self._mapa_canvas_size / 2,
+            text=f"Erro ao ler telemetria:\n{e}", fill="#e08080",
+            font=("Arial", 11), width=self._mapa_canvas_size - 40, justify="center")
+
+    def _atualizar_canvas_mapa(self, png_bytes: bytes):
+        """So isso roda na thread principal (agendado via `after`)."""
+        if not self._mapa_polling:
+            return
+        self._mapa_photo = tk.PhotoImage(data=png_bytes)
+        self.canvas_mapa_gemeo.delete("all")
+        self.canvas_mapa_gemeo.create_image(0, 0, anchor=tk.NW, image=self._mapa_photo)
+
+    def _desconectar_gemeo_digital(self):
+        """Encerra o polling e libera a conexão/mmap do receptor IPC.
+
+        A thread de polling precisa terminar sua iteração atual (join) antes do
+        `close()`: `read_latest_telemetry()` devolve um `ndarray` que é uma view
+        zero-copy sobre o mmap (via `np.frombuffer`), e `mmap.close()` levanta
+        `BufferError` se essa view ainda estiver viva na pilha da outra thread.
+        """
+        self._gemeo_polling = False
+        if self._thread_gemeo is not None:
+            self._thread_gemeo.join(timeout=2.0)
+            self._thread_gemeo = None
+        if self._gemeo_receiver is not None:
+            self._gemeo_receiver.close()
+            self._gemeo_receiver = None
+
+        self.btn_conectar_gemeo.configure(state="normal")
+        self.btn_desconectar_gemeo.configure(state="disabled")
+        self.label_status_gemeo.configure(text="Desconectado", text_color="gray")
+
+    def _ao_fechar(self):
+        """Garante que a conexão IPC e o polling do mapa sejam liberados antes de fechar a janela."""
+        self._desconectar_gemeo_digital()
+        if self._mapa_polling:
+            self._toggle_mapa_gemeo()
+        self.destroy()
 
 
 def main():
