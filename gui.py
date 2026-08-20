@@ -176,6 +176,7 @@ Modo: {self._nome_modo(config.get('modo', 1))}
 Iterações: {config.get('iteracoes', 1)}
 Espera entre coletas: {config.get('espera_carrinho', 5)} batalhas
 Abastecer castelo: {'Sim' if config.get('castelo') else 'Não'}
+Auto-upgrade (depósitos cheios): {'Sim' if config.get('auto_upgrade') else 'Não'}
 
 Exército:
   - Tropas: {config.get('army', {}).get('troops', {}).get('quantidade', 0)} unidades
@@ -417,7 +418,20 @@ Exército:
         self.check_castelo = ctk.CTkCheckBox(frame_extra, text="Abastecer Castelo")
         self.check_castelo.pack(anchor="w", padx=5, pady=2)
         self.check_castelo.select()
-        
+
+        self.check_auto_upgrade = ctk.CTkCheckBox(
+            frame_extra, text="Auto-upgrade quando depósitos encherem (muro primeiro)")
+        self.check_auto_upgrade.pack(anchor="w", padx=5, pady=2)
+
+        # Backend de input: ADB não move o cursor do host (dá pra usar o PC
+        # com o bot rodando); PyAutoGUI é o modo antigo/compatibilidade.
+        ctk.CTkLabel(frame_extra, text="Backend de input:").pack(anchor="w", padx=5, pady=(8, 0))
+        self.combo_backend = ctk.CTkComboBox(
+            frame_extra, values=["adb (Waydroid, não usa o cursor)",
+                                 "pyautogui (compatibilidade / Windows)"], width=320)
+        self.combo_backend.set("adb (Waydroid, não usa o cursor)")
+        self.combo_backend.pack(anchor="w", padx=5, pady=2)
+
         # ========== SEÇÃO FIXA: BOTÕES ==========
         frame_botoes_presets = ctk.CTkFrame(self.aba_presets)
         frame_botoes_presets.grid(row=2, column=0, sticky="ew", padx=15, pady=10)
@@ -517,7 +531,17 @@ Exército:
             self.check_castelo.select()
         else:
             self.check_castelo.deselect()
-        
+
+        if config.get('auto_upgrade'):
+            self.check_auto_upgrade.select()
+        else:
+            self.check_auto_upgrade.deselect()
+
+        if config.get('input_backend') == 'pyautogui':
+            self.combo_backend.set("pyautogui (compatibilidade / Windows)")
+        else:
+            self.combo_backend.set("adb (Waydroid, não usa o cursor)")
+
         self.label_status_valor.configure(text=f"Preset '{preset_nome}' carregado", text_color="cyan")
     
     
@@ -545,6 +569,8 @@ Exército:
             "iteracoes": iteracoes,
             "espera_carrinho": 5,
             "castelo": 1 if self.check_castelo.get() else 0,
+            "auto_upgrade": 1 if self.check_auto_upgrade.get() else 0,
+            "input_backend": self.combo_backend.get().split()[0],
             "tempo_ataque": tempo_ataque,
             "army": {
                 "troops": {"quantidade": tropas_qtd, "sel": 0},

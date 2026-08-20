@@ -19,6 +19,36 @@ def salvar_presets(presets):
         json.dump(presets, f, indent=2, ensure_ascii=False)
 
 
+def _tentar_auto_upgrade(pid, wallet_addr, config):
+    """Chamada opcional (config['auto_upgrade']=True) depois de cada
+    iteração do loop de ataque: se os depósitos passaram do limiar E sobra
+    construtor (reservando 1), escolhe e confirma um upgrade (muro
+    primeiro). Usa ADB (utils.session_loop/upgrade_picker/hud_ocr) — canal
+    de input independente do PyAutoGUI usado nos ataques, não conflita.
+
+    Isolado com try/except: uma falha aqui (OCR ruim, popup não abriu, jogo
+    fora da vila) NUNCA deve derrubar o loop de ataque. Retorna o
+    wallet_addr atualizado (cachear pra próxima chamada — bem mais rápido
+    com cache válido) ou o mesmo de entrada se algo deu errado.
+    """
+    from utils import session_loop, mem_bridge
+
+    if pid is None:
+        pid = mem_bridge.find_game_pid()
+    if pid is None:
+        print("[auto_upgrade] processo do jogo não encontrado, pulando.")
+        return wallet_addr
+
+    thresholds = config.get('upgrade_thresholds', session_loop.DEFAULT_THRESHOLDS)
+    try:
+        result = session_loop.check_and_upgrade(pid, wallet_addr, thresholds)
+        print(f"[auto_upgrade] {result.get('action')}: {result.get('reason', result.get('picked'))}")
+        return result.get('wallet_addr', wallet_addr)
+    except Exception as e:
+        print(f"[auto_upgrade] erro (ignorado, ataque continua): {e}")
+        return wallet_addr
+
+
 def iniciar_bot(config):
     """
     Função principal que executa o bot baseado na configuração fornecida.
@@ -26,6 +56,10 @@ def iniciar_bot(config):
     Args:
         config (dict): Dicionário com a configuração do ataque.
             Deve conter: modo, iteracoes, espera_carrinho, castelo, army
+            Opcional: auto_upgrade (bool) — liga/desliga o upgrade
+            automático quando os depósitos enchem (ver _tentar_auto_upgrade);
+            upgrade_thresholds (dict) — limiar por recurso, padrão em
+            utils.session_loop.DEFAULT_THRESHOLDS.
 
     Nota: Os imports são feitos aqui (lazy loading) para evitar dependências
     de X11 quando a GUI é carregada sem display gráfico.
@@ -35,12 +69,22 @@ def iniciar_bot(config):
     from attacks.builder_base import perder, ganhar_uma, ganhar_duas
     from attacks.home_base import ataque_goblin, ataque_dragao, ataque_rapido
 
+    # Backend de input: 'adb' (não toma conta do cursor do host) ou
+    # 'pyautogui' (compatibilidade, ex.: Windows com emulador na tela).
+    # Setar antes de qualquer import que resolva o backend. Ver
+    # utils/input_backend.py.
+    backend = config.get('input_backend')
+    if backend:
+        os.environ['COC_INPUT_BACKEND'] = backend
+
     modo = config.get('modo', 1)
     iter = config.get('iteracoes', 1)
     army = config.get('army', {})
     espera_carrinho = config.get('espera_carrinho', 5)
     castelo = config.get('castelo', 0)
     num_vilas = config.get('num_vilas', 2)
+    auto_upgrade = config.get('auto_upgrade', False)
+    wallet_addr = None
 
     # Ajustar hotbar se aplicável
     if modo >= 4 and army:
@@ -91,6 +135,9 @@ def iniciar_bot(config):
 
             if i % espera_carrinho == 0 and modo <= 3 and (i != 0):
                 coletar_carrinho()
+
+            if auto_upgrade:
+                wallet_addr = _tentar_auto_upgrade(None, wallet_addr, config)
 
             time.sleep(3)
             print(f"{i + 1}ª iteração concluída.")
