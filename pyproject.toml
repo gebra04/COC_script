@@ -13,5 +13,6 @@ dependencies = [
     "numpy>=2.5.1",
     "pillow>=12.2.0",
     "pyautogui>=0.9.54",
+    "pytesseract>=0.3.13",
     "torch>=2.13.0",
 ]
