@@ -2,8 +2,8 @@
 
 import time
 import random
-import pyautogui
-from utils.mouse_actions import clicar, arrastar, clicar_coordenadas, gerar_pontos_na_reta
+from utils.mouse_actions import (clicar, arrastar, clicar_coordenadas,
+                                 gerar_pontos_na_reta, mover)
 from attacks.attack_utils import procurar_partida, render
 from config.constants import DELAY_PADRAO, BOTOES, CANTOS, RETAS
 from utils.stop_handler import wait_and_check
@@ -163,10 +163,10 @@ def ataque_goblin(army):
 
         pontos = gerar_pontos_na_reta(RETAS[reta][0][0], RETAS[reta][0][1], RETAS[reta][1][0], RETAS[reta][1][1])
         for ponto in pontos:
-            pyautogui.moveTo(ponto[0], ponto[1], duration=0.1)
+            mover(ponto, duracao=0.1)
             clicar_coordenadas(ponto)
             clicar_coordenadas(ponto)
-            clicar_coordenadas(ponto)            
+            clicar_coordenadas(ponto)
                 
         i += 1
 
@@ -191,14 +191,12 @@ def ataque_rapido(army, tempo_ataque=35):
     for i, heroi in enumerate(herois_ativos):
         canto = cantos_herois[i % 4]
         clicar(army[heroi]['sel'])
-        x, y = CANTOS[canto]
-        pyautogui.click(x, y)
+        clicar_coordenadas(CANTOS[canto])
         if not primeira_tropa_posicionada:
             start_time = time.time()
             primeira_tropa_posicionada = True
         time.sleep(0.1) # Breve pausa para o herói aparecer
-        hx, hy = BOTOES[army[heroi]['sel']]
-        pyautogui.click(hx, hy) # Ativa habilidade imediatamente
+        clicar(army[heroi]['sel'])  # Ativa habilidade imediatamente
 
     # Selecionar a tropa
     clicar('selecionar_tropa_1')
@@ -214,7 +212,7 @@ def ataque_rapido(army, tempo_ataque=35):
             fator = i / max(1, (tropas_por_reta - 1))
             x = int(round(xi + (xf - xi) * fator))
             y = int(round(yi + (yf - yi) * fator))
-            pyautogui.click(x, y)
+            clicar_coordenadas((x, y))
             if not primeira_tropa_posicionada:
                 start_time = time.time()
                 primeira_tropa_posicionada = True
